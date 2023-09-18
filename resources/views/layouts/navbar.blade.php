@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.40);
+<nav class="navbar navbar-expand-lg bg-white sticky-top z-50" style="box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.40);
 ">
-  <div class="container-fluid">
+  <div class="container-fluid z-50">
     <a class="navbar-brand ms-5" href="#"><img src="{{ asset('img/Kana-Logo.png') }}" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

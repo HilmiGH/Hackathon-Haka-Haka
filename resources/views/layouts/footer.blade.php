@@ -3,46 +3,46 @@
         <div class="row align-items-center">
             <div class="row">
                 <div class="col-5" style="color: white">
-                    <img src="{{ asset('img/Karsa-Guna-Logo.png') }}" alt="">
+                    <img class="mb-2" src="{{ asset('img/Karsa-Guna-Logo.png') }}" alt="">
                     <p class="fw-semibold" style="font-size: 18px;">Jalan Tanpa Nama no 20, Tanggulangin, Sidoarjo</p>
                     <p class="fw-semibold" style="font-size: 18px;">Karsa Guna adalah brand fashion yang dipegang oleh Sugianto yang berfokus pada produk dompet dan tas berbahan dasar kulit dengan kualitas premium dan mengusung tema nusantara.</p>
                 </div>
                 <div class="col" style="color: white; margin-inline: 100px">
-                    <h5>Useful Link</h5>
-                    <ul>
-                        <li>
-                            <a href="">Katalog Produk</a>
+                    <h5 class="mb-3" style="font-weight: 800; font-size: 24px">Useful Link</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-3">
+                            <a href="" class="nav-link p-0 text-white" style="">Katalog Produk</a>
                         </li>
-                        <li>
-                            <a href="">Workshop Kami</a>
+                        <li class="nav-item mb-3">
+                            <a href="" class="nav-link p-0 text-white">Workshop Kami</a>
                         </li>
-                        <li>
-                            <a href="">Kebijakan Privasi</a>
+                        <li class="nav-item mb-3">
+                            <a href="" class="nav-link p-0 text-white">Kebijakan Privasi</a>
                         </li>
-                        <li>
-                            <a href="">Ketentuan Garansi</a>
+                        <li class="nav-item mb-3">
+                            <a href="" class="nav-link p-0 text-white">Ketentuan Garansi</a>
                         </li>
-                        <li>
-                            <a href="">Join Program Reseller</a>
+                        <li class="nav-item mb-3">
+                            <a href="" class="nav-link p-0 text-white">Join Program Reseller</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col" style="color: white;">
-                    <h5>Contact Us</h5>
-                    <p></p>
-                    <div>
-                        <img src="" alt="">
-                        <span></span>
+                    <h5 class="mb-3" style="font-weight: 800; font-size: 24px">Contact Us</h5>
+                    <p class="fw-medium mb-3" style="font-size: 18px">Karsa Guna by Sugianto</p>
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="me-1" src="{{ asset('img/Web-Logo.png') }}" alt="" style="width: 20px; height: 20px">
+                        <span class="fw-medium" style="font-size: 18px">karsaguna.com</span>
                     </div>
-                    <div>
-                        <a href=""><img src="" alt=""></a>
-                        <a href=""><img src="" alt=""></a>
-                        <a href=""><img src="" alt=""></a>
-                        <span></span>
+                    <div class="d-flex align-items-center mb-4">
+                        <a class="me-2" href=""><img src="{{ asset('img/Ig-Logo.png') }}" alt=""></a>
+                        <a class="me-2" href=""><img src="{{ asset('img/Twitter-Logo.png') }}" alt=""></a>
+                        <a class="me-2" href=""><img src="{{ asset('img/Tiktok-Logo.png') }}" alt=""></a>
+                        <span class="fw-medium" style="font-size: 18px">@Karsaguna</span>
                     </div>
-                    <div>
-                        <img src="" alt="">
-                        <span></span>
+                    <div class="d-flex align-items-center mb-4">
+                        <a class="me-2" href=""><img src="{{ asset('img/Yt-Logo.png') }}" alt=""></a>
+                        <span class="fw-medium" style="font-size: 18px">Karsaguna</span>
                     </div>
                 </div>
             </div>
