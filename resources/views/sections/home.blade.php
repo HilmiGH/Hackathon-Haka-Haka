@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_web.app')
 
 @section('content')
     <section style="margin-bottom: 50px">
