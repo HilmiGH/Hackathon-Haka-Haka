@@ -16,6 +16,25 @@
             color: #fff;
             /* Warna teks putih */
         }
+
+        #pilihanGambarKecil {
+            display: flex;
+            justify-content: center;
+        }
+
+        #pilihanGambarKecil img {
+            width: 50px;
+            /* Atur ukuran gambar kecil sesuai keinginan */
+            margin: 5px;
+            /* Atur margin sesuai keinginan */
+            cursor: pointer;
+            /* Menambahkan kursor tangan saat dihover */
+        }
+
+        #pilihanGambarKecil img:hover {
+            border: 2px solid #007bff;
+            /* Menambahkan border saat dihover */
+        }
     </style>
     <script>
         function showContent(section) {
@@ -24,7 +43,7 @@
                 btn.classList.remove('active');
             });
 
-            // Menambahkan class 'active' pada tombol yang sedang dilihat
+            // Menambahkan class 'active' pada tombol yang sedang dilihat    <img class="img-fluid text-end" src="{{ asset('img/produk.png') }}" alt="Gambar Produk">
             switch (section) {
                 case 'deskripsi':
                     document.getElementById('deskripsiBtn').classList.add('active');
@@ -44,6 +63,13 @@
                     break;
             }
         }
+
+        function ubahGambarUtama(namaGambar) {
+    var gambarUtama = document.getElementById('gambarUtama');
+    gambarUtama.src = namaGambar;
+    gambarUtama.alt = 'Gambar Utama ' + namaGambar;
+    console.log('Gambar Utama Berubah ke:', namaGambar);
+}
     </script>
     <section>
         <div class="container-fluid">
@@ -62,9 +88,22 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6 d-flex justify-content-end">
-                    <img class="img-fluid text-end" src="{{ asset('img/produk.png') }}" alt="Gambar Produk">
+                <div class="col-sm-6 d-flex justify-content-center flex-column align-items-center">
+                  <img id="gambarUtama" src="{{ asset('img/produk.png') }}" alt="Gambar Utama">
+                  <div id="pilihanGambarKecil">
+                    <img src="{{ asset('img/produk.png') }}" alt="Pilihan Gambar 2" onclick="ubahGambarUtama('img/produk.png')">
+                    <img src="{{ asset('img/aksesoris-kiri-atas.png') }}" alt="Pilihan Gambar 1" onclick="ubahGambarUtama('img/aksesoris-kiri-atas.png')">
+                    <img src="{{ asset('img/aksesoris-kanan-atas.png') }}" alt="Pilihan Gambar 2" onclick="ubahGambarUtama('img/aksesoris-kanan-atas.png')">
+                    <img src="{{ asset('img/Kana-Logo.png') }}" alt="Pilihan Gambar 1" onclick="ubahGambarUtama('img/Kana-Logo.png')">
+                    <!-- Tambahkan gambar-gambar lainnya sesuai kebutuhan -->
+                  </div>
                 </div>
+
+
+
+
+
+
                 <div class="col-sm-6">
                     <h1><b>Brown Trifold Leather<br> Wallet First Edition </b></h1>
                     <h2>
@@ -104,9 +143,9 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-6 ">
-                            <a href="#" class="btn btn-custom w-100" ><img src="{{ asset('img/Shop-Bag-Logo.png') }}"
+                            <a href="#" class="btn btn-custom w-100"><img src="{{ asset('img/Shop-Bag-Logo.png') }}"
                                     alt="" style="filter: brightness(0) invert(1);"> Masukkan Keranjang</a>
                         </div>
                         <div class="col-sm-6 = ">
