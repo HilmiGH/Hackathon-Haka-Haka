@@ -65,11 +65,11 @@
         }
 
         function ubahGambarUtama(namaGambar) {
-    var gambarUtama = document.getElementById('gambarUtama');
-    gambarUtama.src = namaGambar;
-    gambarUtama.alt = 'Gambar Utama ' + namaGambar;
-    console.log('Gambar Utama Berubah ke:', namaGambar);
-}
+            var gambarUtama = document.getElementById('gambarUtama');
+            gambarUtama.src = namaGambar;
+            gambarUtama.alt = 'Gambar Utama ' + namaGambar;
+            console.log('Gambar Utama Berubah ke:', namaGambar);
+        }
     </script>
     <section>
         <div class="container-fluid">
@@ -89,21 +89,28 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 d-flex justify-content-center flex-column align-items-center">
-                  <img id="gambarUtama" src="{{ asset('img/produk.png') }}" alt="Gambar Utama">
-                  <div id="pilihanGambarKecil">
-                    <img src="{{ asset('img/produk.png') }}" alt="Pilihan Gambar 2" onclick="ubahGambarUtama('img/produk.png')">
-                    <img src="{{ asset('img/aksesoris-kiri-atas.png') }}" alt="Pilihan Gambar 1" onclick="ubahGambarUtama('img/aksesoris-kiri-atas.png')">
-                    <img src="{{ asset('img/aksesoris-kanan-atas.png') }}" alt="Pilihan Gambar 2" onclick="ubahGambarUtama('img/aksesoris-kanan-atas.png')">
-                    <img src="{{ asset('img/Kana-Logo.png') }}" alt="Pilihan Gambar 1" onclick="ubahGambarUtama('img/Kana-Logo.png')">
-                    <!-- Tambahkan gambar-gambar lainnya sesuai kebutuhan -->
-                  </div>
+                    <img id="gambarUtama" src="{{ asset('img/produk.png') }}" alt="Gambar Utama">
+                    <div id="pilihanGambarKecil">
+                        <img src="{{ asset('img/produk.png') }}" alt="Pilihan Gambar 2"
+                            onclick="ubahGambarUtama('img/produk.png')">
+                        <img src="{{ asset('img/aksesoris-kiri-atas.png') }}" alt="Pilihan Gambar 1"
+                            onclick="ubahGambarUtama('img/aksesoris-kiri-atas.png')">
+                        <img src="{{ asset('img/aksesoris-kanan-atas.png') }}" alt="Pilihan Gambar 2"
+                            onclick="ubahGambarUtama('img/aksesoris-kanan-atas.png')">
+                        <img src="{{ asset('img/Kana-Logo.png') }}" alt="Pilihan Gambar 1"
+                            onclick="ubahGambarUtama('img/Kana-Logo.png')">
+                        <!-- Tambahkan gambar-gambar lainnya sesuai kebutuhan -->
+                    </div>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-light dropdown-toggle " data-bs-toggle="dropdown">
+                            Kostumisasi
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><span class="dropdown-item-text"> <img src="{{ asset('img/kostumisasi.png') }}"
+                                        alt="Pilihan Gambar 2"></span></li>
+                        </ul>
+                    </div>
                 </div>
-
-
-
-
-
-
                 <div class="col-sm-6">
                     <h1><b>Brown Trifold Leather<br> Wallet First Edition </b></h1>
                     <h2>
@@ -117,7 +124,7 @@
                                 onclick="showContent('deskripsi')"><b>DESKRIPSI</b></button>
                             <span>|</span>
                             <button type="button" class="btn" id="spesifikasiBtn"
-                                onclick="showContent('spesifikasi')"><b>SPESIFIKAS</b></button>
+                                onclick="showContent('spesifikasi')"><b>SPESIFIKASI</b></button>
                             <span>|</span>
                             <button type="button" class="btn" id="ulasanBtn"
                                 onclick="showContent('ulasan')"><b>ULASAN</b></button>
@@ -154,6 +161,87 @@
                     </div>
                 </div>
             </div>
+            <div
+                style="background: linear-gradient(180deg, #D17323, #1a1818); -webkit-background-clip: text; color: transparent; font-family: 'Lato';text-align:center">
+                <h1>Rekomendasi Produk Lainnya</h1>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                            style="width:90%;margin-top:5%">
+                        <div class="card-body">
+                            <p class="card-text">Fashion Pria</p>
+                            <h4 class="card-title"><b>Brown Trifold Wall</b></h4>
+                            <p> <span style="text-decoration: line-through; color: gray;">Rp200.000</span>
+                                <span style="color: red;">Rp100.000</span>
+                            </p>
+                            <a href="#" class="btn btn-custom w-100">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                            style="width:90%;margin-top:5%">
+                        <div class="card-body">
+                            <p class="card-text">Fashion Pria</p>
+                            <h4 class="card-title"><b>Brown Trifold Wall</b></h4>
+                            <p> <span style="text-decoration: line-through; color: gray;">Rp200.000</span>
+                                <span style="color: red;">Rp100.000</span>
+                            </p>
+                            <a href="#" class="btn btn-custom w-100">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                            style="width:90%;margin-top:5%">
+                        <div class="card-body">
+                            <p class="card-text">Fashion Pria</p>
+                            <h4 class="card-title"><b>Brown Trifold Wall</b></h4>
+                            <p> <span style="text-decoration: line-through; color: gray;">Rp200.000</span>
+                                <span style="color: red;">Rp100.000</span>
+                            </p>
+                            <a href="#" class="btn btn-custom w-100">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                            style="width:90%;margin-top:5%">
+                        <div class="card-body">
+                            <p class="card-text">Fashion Pria</p>
+                            <h4 class="card-title"><b>Brown Trifold Wall</b></h4>
+                            <p> <span style="text-decoration: line-through; color: gray;">Rp200.000</span>
+                                <span style="color: red;">Rp100.000</span>
+                            </p>
+                            <a href="#" class="btn btn-custom w-100">See Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <img class="img-fluid" style="margin-left:-2%; margin-top:-2%"
+                        src="{{ asset('img/aksesoris-kiri-bawah.png') }}" alt="Gambar Kiri Atas">
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
     </section>
     <section>
         <div class="position-relative">
