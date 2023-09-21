@@ -114,8 +114,16 @@
                 </button>
             </nav>
             <div class="dashboard">
-                <div class="d-flex" style="margin-bottom: 30px">
-                    <h1 style="font-weight: 900; font-size: 48px;">Ringkasan Usaha</h1>
+                <div class="d-flex align-items-center" style="margin-bottom: 30px">
+                    <h1 style="font-weight: 900; font-size: 48px; margin-right: 30px">Ringkasan Usaha</h1>
+                    <div class="">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary active">Button 1</button>
+                            <button type="button" class="btn btn-secondary">Button 2</button>
+                            <button type="button" class="btn btn-secondary">Button 3</button>
+                            <button type="button" class="btn btn-secondary">Button 4</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex" style="gap: 30px; margin-bottom: 30px">
                     <div style="background-color: white; padding: 10px; border-radius: 15px">
