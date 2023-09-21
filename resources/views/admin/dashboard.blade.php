@@ -108,14 +108,35 @@
                 </button>
             </nav>
             <div class="dashboard">
-                <div class="d-flex">
+                <div class="d-flex" style="margin-bottom: 30px">
                     <h1 style="font-weight: 900; font-size: 48px;">Ringkasan Usaha</h1>
-                    <div></div>
                 </div>
-                <div>
-
+                <div class="d-flex" style="gap: 30px; margin-bottom: 30px">
+                    <div style="background-color: white; padding: 10px; border-radius: 15px">
+                        <h4>Total Pendapatan</h4>
+                        <h4>Rp4.800.000</h4>
+                        <h6>30% lebih dari hari kemarin</h6>
+                    </div>
+                    <div style="background-color: white; padding: 10px; border-radius: 15px">
+                        <h4>Total Penjualan</h4>
+                        <h4>120 Pcs</h4>
+                        <h6>10% kurang dari hari kemarin</h6>
+                    </div>
+                    <div style="background-color: white; padding: 10px; border-radius: 15px">
+                        <h4>Total Kunjungan Web</h4>
+                        <h4>120 Visit</h4>
+                        <h6>20% lebih dari hari kemarin</h6>
+                    </div>
                 </div>
-                <div class="d-flex" style="gap: 30px">
+                <div class="d-flex" style="gap: 30px; margin-bottom: 30px;">
+                    <div class="" style="width: 600px ; height: 410px ; background-color: white; border-radius: 10px">
+                        Test
+                    </div>
+                    <div class="" style=" width: 400px ; height: 410px ; background-color: white; border-radius: 10px">
+                        Test
+                    </div>
+                </div>
+                <div class="d-flex" style="gap: 30px; margin-bottom: 30px;">
                     <div style="max-width: 800px; background-color: white; padding: 20px">
                         <h2>Transaksi Terkini</h2>
                         <table class="table table-bordered">
