@@ -10,7 +10,6 @@ class CreateProdukTable extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id('id_prod');
-            $table->unsignedBigInteger('id_admin');
             $table->string('nama_prod');
             $table->decimal('harga_prod', 10, 2);
             $table->string('desc_prod')->nullable();
