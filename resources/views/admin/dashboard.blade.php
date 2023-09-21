@@ -115,8 +115,56 @@
                 <div>
 
                 </div>
-                <div>
-
+                <div class="d-flex" style="gap: 30px">
+                    <div style="max-width: 800px; background-color: white; padding: 20px">
+                        <h2>Transaksi Terkini</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID order</th>
+                                    <th>Produk/Layanan</th>
+                                    <th>Total Harga</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php for ($i = 1; $i <= 11; $i++) { ?>
+                                    <tr>
+                                        <td>KM 001</td>
+                                        <td class="d-flex">
+                                            <img src="{{ asset('img/dashboard-product-img.png') }}" alt="">
+                                            <div>
+                                                <p style="margin-bottom: 0px">Brown Trifold Wallet</p>
+                                                <p style="margin-bottom: 0px">12 items</p>
+                                            </div>
+                                        </td>
+                                        <td>Rp 100.000</td>
+                                        <td>12-09-2023</td>
+                                        <td>Sukses</td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="max-width: 800px; background-color: white; padding: 20px">
+                        <h2>Top Produk</h2>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <?php for ($i = 1; $i <= 11; $i++) { ?>
+                                    <tr>
+                                        <td class="d-flex">
+                                            <img src="{{ asset('img/dashboard-product-img.png') }}" alt="">
+                                            <div>
+                                                <p style="margin-bottom: 0px">Brown Trifold Wallet</p>
+                                                <p style="margin-bottom: 0px">12 items</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
         </div>
