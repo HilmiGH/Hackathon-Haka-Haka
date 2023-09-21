@@ -1,5 +1,5 @@
 @extends('layouts_web.app')
-
+@section('title', 'Beranda')
 @section('content')
     <section>
         <img src="{{ asset('img/LP-Sect_1.png') }}" alt="" style="width: 100vw">
