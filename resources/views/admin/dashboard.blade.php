@@ -101,8 +101,30 @@
                 $user = auth()->user();
                 @endphp
                 <div style="display: inline-block; margin-right: 10px">
-                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">{{ ($user->name) }}</p>
+                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">{{ shortenName($user->name) }}</p>
+                    <?php
+                function shortenName($name)
+                {
+                    $words = explode(' ', $name); // Membagi string menjadi array kata-kata
 
+                    if (count($words) > 2) {
+                        $shortened = ucfirst($words[0]); // Mengambil kata pertama dan mengkapitalisasi huruf pertama
+
+                        for ($i = 1; $i < count($words); $i++) {
+                            if ($i >= count($words) - 2) {
+                                $shortened .= ' ' . strtoupper(substr($words[$i], 0, 1)) . '.'; // Menambahkan huruf pertama setiap kata terakhir ke depannya dengan titik
+                            } else {
+                                $shortened .= ' ' . $words[$i]; // Menambahkan kata pertama dan kedua tanpa perubahan
+                            }
+                        }
+
+                        return $shortened;
+                    }
+
+                    return $name;
+                }
+
+                ?>
 
                     <p style="margin-bottom: 0px; font-size: 12px; font-style: normal; font-weight: 700; text-align: right">Admin Toko</p>
                 </div>
@@ -199,13 +221,22 @@
                         <h2>Top Produk</h2>
                         <table class="table table-bordered">
                             <tbody>
-                                @foreach($topProducts->take(10) as $topProduct)
+                                @php
+                                $topProducts = DB::table('detail_keranjang')
+                                    ->select('nama_produk', DB::raw('SUM(jumlah_produk) as total_pembelian'))
+                                    ->groupBy('nama_produk')
+                                    ->orderByDesc('total_pembelian')
+                                    ->take(10)
+                                    ->get();
+                                @endphp
+
+                                @foreach($topProducts as $topProduct)
                                     <tr>
                                         <td class="d-flex">
                                             <img src="{{ asset('img/dashboard-product-img.png') }}" alt="">
                                             <div>
-                                                <p style="margin-bottom: 0px">Product ID: {{ $topProduct->produk_id }}</p>
-                                                <p style="margin-bottom: 0px">Total Pembelian: {{ $topProduct->total_pembelian }} items</p>
+                                                <p style="margin-bottom: 0px">{{ $topProduct->nama_produk }}</p>
+                                                <p style="margin-bottom: 0px">{{ $topProduct->total_pembelian }} items</p>
                                             </div>
                                         </td>
                                     </tr>
