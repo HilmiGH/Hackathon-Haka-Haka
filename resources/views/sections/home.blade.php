@@ -248,8 +248,7 @@
                                 “Kana's leather pieces have become an essential part of my daily style. The attention to detail and the superb quality make them a must-have for anyone who values both fashion and functionality. Kudos to Kana for redefining leather craftsmanship!”
                             </p>
                         </div>
-                    </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item d-flex justify-content-center">
                         <div style="border-radius: 40px; background-color: gray; padding-inline: 44px; padding-block: 80px ; width: 590px; margin-top: 120px">
                             <div class="position-relative;" style="margin-left: 30%">
                                 <div style="height: 195px ;width: 195px ;background-color: black ;border-radius: 701.298px; box-shadow: 0px 1.404px 2.808px 0px rgba(0, 0, 0, 0.25); position: absolute; top: 0px; overflow: hidden">
@@ -266,7 +265,9 @@
                                 “Kana's leather pieces have become an essential part of my daily style. The attention to detail and the superb quality make them a must-have for anyone who values both fashion and functionality. Kudos to Kana for redefining leather craftsmanship!”
                             </p>
                         </div>
-                    <div class="carousel-item">
+                    </div>
+                    </div>
+                    <div class="carousel-item d-flex justify-content-center">
                         <div style="border-radius: 40px; background-color: gray; padding-inline: 44px; padding-block: 80px ; width: 590px; margin-top: 120px">
                             <div class="position-relative;" style="margin-left: 30%">
                                 <div style="height: 195px ;width: 195px ;background-color: black ;border-radius: 701.298px; box-shadow: 0px 1.404px 2.808px 0px rgba(0, 0, 0, 0.25); position: absolute; top: 0px; overflow: hidden">
@@ -346,12 +347,4 @@
             </div>
         </div>
     </section>
-    <script>
-        const myCarouselElement = document.querySelector('#myCarousel')
-
-        const carousel = new bootstrap.Carousel(myCarouselElement, {
-        interval: 2000,
-        touch: false
-})
-    </script>
 @endsection

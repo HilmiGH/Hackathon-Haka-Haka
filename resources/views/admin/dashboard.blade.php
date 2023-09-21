@@ -110,7 +110,11 @@
             <div class="dashboard">
                 <div class="d-flex">
                     <h1 style="font-weight: 900; font-size: 48px;">Ringkasan Usaha</h1>
-                    <div></div>
+                    <div class="">
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
                 <div>
 
