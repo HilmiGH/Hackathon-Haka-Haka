@@ -24,29 +24,28 @@
     }
   
     .navbar-side {
-        flex: 0 0 300px;
-        background-color: #FFFFFF;
+        flex: 1;
     }
 
     .navbar-top,
     .dashboard {
-    flex: 1;
+    flex: 5;
     }
 
     .dashboard {
-        
-
         background-image: url('{{ asset('img/bg login.svg') }}');
         background-repeat: no-repeat;
         background-position: center;
         background-color: #FFFFFF;
         background-size: cover;
+
+        padding: 20px;
     }
     </style>
 </head>
-<body>
+<body style="margin: 0; padding: 0;">
     <div class="dashboard-container">
-        <aside class="navbar-side" style="box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.50); position: relative;">
+        <aside class="navbar-side" style="box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.50); position: relative; max-width: 300px">
             <nav class="nav flex-column " style="padding: 20px">
                 <img src="{{ asset('img/Karsa-Guna-Dashboard-Logo.png') }}" alt="" style="width: 200px">
                 <hr>
@@ -91,39 +90,34 @@
                 </a>
             </nav>
         </aside>
-        <div style="">
-            <nav class="navbar-top" style="z-index: 50 ;box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.50); padding-block: 10px; position: relative; width: ">
-                <form class="d-flex" role="search" style="display: inline-block!important; margin-left: 300px">
+        <div style="width: 100%">
+            <nav class="navbar-top d-flex align-items-center" style="z-index: 50 ;box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.50); padding-block: 10px; position: relative; width: 100%;">
+                <form class="d-flex" role="search" style="display: inline-block!important; margin-left: 400px; margin-right: 150px">
                     <input class="form-control me-2" type="search" placeholder="Ketikkan Pencarian Anda Disini" aria-label="Search" style="width: 300px">
                     <button class="btn btn-outline-success" type="submit" style="display: none">Search</button>
                 </form>
-                <div style="display: inline-block;">
-                    <p style="margin-bottom: 0px">Lee Cheng Kwan</p>
-                    <p style="margin-bottom: 0px">Admin Toko</p>
+                <div style="display: inline-block; margin-right: 10px">
+                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">Lee Cheng Kwan</p>
+                    <p style="margin-bottom: 0px; font-size: 12px; font-style: normal; font-weight: 700; text-align: right">Admin Toko</p>
                 </div>
-                <div style="display: inline-block;">
-                    <img src="" alt="">
+                <div style="display: inline-block; margin-right: 10px">
+                    <img src="{{ asset('img/dashboard-profile-logo.png') }}" alt="">
                 </div style="display: inline-block;">
-                <button style="display: inline-block;">
-                    <img src="" alt="">
+                <button style="display: inline-block; background-color: transparent; border: 0px">
+                    <img src="{{ asset('img/Dashboard-Notif-Logo.png') }}" alt="">
                 </button>
             </nav>
             <div class="dashboard">
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
-                <h1>THIS IS MAIN</h1>
+                <div class="d-flex">
+                    <h1 style="font-weight: 900; font-size: 48px;">Ringkasan Usaha</h1>
+                    <div></div>
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
             </main>
         </div>
     </div>
