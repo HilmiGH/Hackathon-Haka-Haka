@@ -118,10 +118,10 @@
                     <h1 style="font-weight: 900; font-size: 48px; margin-right: 30px">Ringkasan Usaha</h1>
                     <div class="">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-secondary active">Button 1</button>
-                            <button type="button" class="btn btn-secondary">Button 2</button>
-                            <button type="button" class="btn btn-secondary">Button 3</button>
-                            <button type="button" class="btn btn-secondary">Button 4</button>
+                            <button type="button" class="btn btn-secondary active">Harian</button>
+                            <button type="button" class="btn btn-secondary">Mingguan</button>
+                            <button type="button" class="btn btn-secondary">Bulanan</button>
+                            <button type="button" class="btn btn-secondary">Tahunan</button>
                         </div>
                     </div>
                 </div>
