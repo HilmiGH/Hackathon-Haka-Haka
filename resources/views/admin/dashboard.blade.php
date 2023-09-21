@@ -136,8 +136,16 @@
                 </button>
             </nav>
             <div class="dashboard">
-                <div class="d-flex" style="margin-bottom: 30px">
-                    <h1 style="font-weight: 900; font-size: 48px;">Ringkasan Usaha</h1>
+                <div class="d-flex align-items-center" style="margin-bottom: 30px">
+                    <h1 style="font-weight: 900; font-size: 48px; margin-right: 30px">Ringkasan Usaha</h1>
+                    <div class="">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-secondary active">Harian</button>
+                            <button type="button" class="btn btn-secondary">Mingguan</button>
+                            <button type="button" class="btn btn-secondary">Bulanan</button>
+                            <button type="button" class="btn btn-secondary">Tahunan</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex" style="gap: 30px; margin-bottom: 30px">
                     <div style="background-color: white; padding: 10px; border-radius: 15px">
