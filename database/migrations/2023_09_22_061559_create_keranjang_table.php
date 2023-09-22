@@ -9,11 +9,9 @@ class CreateKeranjangTable extends Migration
     public function up()
     {
         Schema::create('keranjang', function (Blueprint $table) {
-            $table->id();
-            $table->string('ip_pengguna'); // Kolom untuk menyimpan alamat IP pengguna
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
-            // Tambahan kolom lain sesuai kebutuhan Anda
+            $table->id('id_keranjang');
+            $table->string('ip_pengguna', 25);
+            $table->timestamps();
         });
     }
 

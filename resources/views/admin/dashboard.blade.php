@@ -13,6 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
     * {
     font-family: Lato;
@@ -41,6 +44,17 @@
 
         padding: 20px;
     }
+    <style>
+        /* Warna untuk garis dan titik pada grafik */
+        .chartjs-line-color {
+            border-color: #944604 !important;
+        }
+
+        /* Warna latar belakang area dalam grafik */
+        .chartjs-area-color {
+            background-color: rgba(242, 212, 187, 0.5) !important;
+        }
+
     </style>
 </head>
 <body style="margin: 0; padding: 0;">
@@ -101,30 +115,8 @@
                 $user = auth()->user();
                 @endphp
                 <div style="display: inline-block; margin-right: 10px">
-                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">{{ shortenName($user->name) }}</p>
-                    <?php
-                function shortenName($name)
-                {
-                    $words = explode(' ', $name); // Membagi string menjadi array kata-kata
+                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">{{ ($user->name) }}</p>
 
-                    if (count($words) > 2) {
-                        $shortened = ucfirst($words[0]); // Mengambil kata pertama dan mengkapitalisasi huruf pertama
-
-                        for ($i = 1; $i < count($words); $i++) {
-                            if ($i >= count($words) - 2) {
-                                $shortened .= ' ' . strtoupper(substr($words[$i], 0, 1)) . '.'; // Menambahkan huruf pertama setiap kata terakhir ke depannya dengan titik
-                            } else {
-                                $shortened .= ' ' . $words[$i]; // Menambahkan kata pertama dan kedua tanpa perubahan
-                            }
-                        }
-
-                        return $shortened;
-                    }
-
-                    return $name;
-                }
-
-                ?>
 
                     <p style="margin-bottom: 0px; font-size: 12px; font-style: normal; font-weight: 700; text-align: right">Admin Toko</p>
                 </div>
@@ -180,17 +172,21 @@
                     </div>
                     <div style="background-color: white; padding: 10px; border-radius: 15px">
                         <h4>Total Pelanggan</h4>
-                        <h4>X Pelanggan</h4>
+                        <h4>{{ \App\Models\Pelanggan::count() }} Pelanggan</h4>
                         <h6>20% lebih dari hari kemarin</h6>
                     </div>
 
                 </div>
                 <div class="d-flex" style="gap: 30px; margin-bottom: 30px;">
-                    <div class="" style="width: 600px ; height: 410px ; background-color: white; border-radius: 10px">
+                    <div class="" style="width: 600px; height: 410px; background-color: white; border-radius: 10px">
                         <h2><strong>Chart Pertumbuhan Pendapatan Usaha</strong></h2>
+                        <div class="chart-container">
+                            <canvas id="myBarChart"></canvas>
+                        </div>
                     </div>
-                    <div class="" style=" width: 400px ; height: 410px ; background-color: white; border-radius: 10px">
+                    <div class="" style="width: 450px; height: 500px; background-color: white; border-radius: 10px">
                         <h2><strong>Chart Volume Pelanggan</strong></h2>
+                        <canvas id="myPieChart"></canvas>
                     </div>
                 </div>
                 <div class="d-flex" style="gap: 30px; margin-bottom: 30px;">
@@ -207,23 +203,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for ($i = 1; $i <= 11; $i++) { ?>
+                                @php
+                                $transaksis = DB::table('transaksis')
+                                    ->select(
+                                        'transaksis.id',
+                                        'transaksis.total_harga',
+                                        'transaksis.created_at',
+                                        'transaksis.status_transaksi'
+                                    )
+                                    ->orderByDesc('transaksis.created_at')
+                                    ->take(10)
+                                    ->get();
+                                @endphp
+
+                                @foreach($transaksis as $transaksi)
                                     <tr>
-                                        <td>KM 001</td>
-                                        <td class="d-flex">
-                                            <img src="{{ asset('img/dashboard-product-img.png') }}" alt="">
-                                            <div>
-                                                <p style="margin-bottom: 0px">Brown Trifold Wallet</p>
-                                                <p style="margin-bottom: 0px">12 items</p>
-                                            </div>
+                                        <td>{{ $transaksi->id }}</td>
+                                        <td>
+                                            @php
+                                            $namaProduk = DB::table('detail_keranjang')
+                                                ->whereIn('id_keranjang', function($query) use ($transaksi) {
+                                                    $query->select('id_keranjang')
+                                                        ->from('transaksis')
+                                                        ->where('id', $transaksi->id);
+                                                })
+                                                ->pluck('nama_produk')
+                                                ->implode('<br>');
+                                            @endphp
+                                            {!! $namaProduk !!}
                                         </td>
-                                        <td>Rp 100.000</td>
-                                        <td>12-09-2023</td>
-                                        <td>Sukses</td>
+                                        <td>Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
+                                        <td>
+                                            @if ($transaksi->created_at instanceof \Carbon\Carbon)
+                                                {{ $transaksi->created_at->format('d-m-Y') }}
+                                            @else
+                                                {{ $transaksi->created_at }}
+                                            @endif
+                                        </td>
+                                        <td>{{ $transaksi->status_transaksi }}</td>
                                     </tr>
-                                <?php } ?>
+                                @endforeach
                             </tbody>
                         </table>
+
+
                     </div>
                     <div style="max-width: 1000px; background-color: white; padding: 20px">
                         <h2>Top Produk</h2>
@@ -256,5 +279,130 @@
             </main>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            var dataPelanggan = {!! json_encode(['Pelanggan Laki-laki' => $jumlahLakiLaki, 'Pelanggan Perempuan' => $jumlahPerempuan]) !!};
+            var totalPelanggan = dataPelanggan['Pelanggan Laki-laki'] + dataPelanggan['Pelanggan Perempuan'];
+            var warnaPelangganLakiLaki = '#944604';
+            var warnaPelangganPerempuan = '#F2D4BB';
+
+            var data = {
+                labels: Object.keys(dataPelanggan),
+                datasets: [{
+                    data: Object.values(dataPelanggan),
+                    backgroundColor: [warnaPelangganLakiLaki, warnaPelangganPerempuan],
+                    borderWidth: 1
+                }]
+            };
+
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%'
+            };
+
+            var myPieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options
+            });
+
+            var centerX = ctx.canvas.width / 2;
+            var centerY = ctx.canvas.height / 2;
+
+            ctx.font = '32px Lato, Arial';
+            ctx.fillStyle = '#000'; // Warna teks hitam
+            ctx.textAlign = 'center'; // Teks di tengah
+            ctx.textBaseline = 'middle'; // Teks di tengah
+
+            var lakiLakiPercentage = ((dataPelanggan['Pelanggan Laki-laki'] / totalPelanggan) * 100).toFixed(2);
+            var perempuanPercentage = ((dataPelanggan['Pelanggan Perempuan'] / totalPelanggan) * 100).toFixed(2);
+
+            ctx.fillText(`${lakiLakiPercentage}% Laki-laki`, centerX, centerY - 15);
+            ctx.fillText(`${perempuanPercentage}% Perempuan`, centerX, centerY + 15);
+        });
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Data untuk bar chart
+    var data = {
+        labels: [], // Label tanggal
+        datasets: [{
+            label: 'Pendapatan',
+            data: [], // Data total pendapatan per tanggal
+            backgroundColor: [], // Warna batang chart
+            borderColor: [], // Warna border batang chart
+            borderWidth: 1, // Lebar border batang chart
+        }]
+    };
+
+    @php
+        // Mendapatkan data total pendapatan dari PHP
+        $totalPendapatanPerTanggal = []; // Inisialisasi array untuk total pendapatan per tanggal
+        $warnaBatangChart = []; // Inisialisasi array untuk warna batang chart
+        $tanggalTransaksi = DB::table('transaksis')
+            ->selectRaw('DATE(created_at) as tanggal')
+            ->groupBy('tanggal')
+            ->orderBy('tanggal')
+            ->pluck('tanggal');
+
+        foreach ($tanggalTransaksi as $tanggal) {
+            // Mengambil data transaksi untuk tanggal yang sama
+            $totalPendapatan = DB::table('transaksis')
+                ->whereDate('created_at', $tanggal)
+                ->sum('total_harga');
+
+            // Menyimpan total pendapatan per tanggal ke dalam array
+            $totalPendapatanPerTanggal[] = $totalPendapatan;
+
+            // Menyimpan warna batang chart (misalnya, #944604) ke dalam array
+            $warnaBatangChart[] = '#944604';
+        }
+
+        // Mengonversi PHP array ke JavaScript
+        $totalPendapatanJS = json_encode($totalPendapatanPerTanggal);
+        $warnaBatangChartJS = json_encode($warnaBatangChart);
+        $tanggalTransaksiJS = json_encode($tanggalTransaksi);
+    @endphp
+
+    // Mengganti label pada data dengan label tanggal yang sudah dihasilkan
+    data.labels = {!! $tanggalTransaksiJS !!};
+    data.datasets[0].data = {!! $totalPendapatanJS !!};
+    data.datasets[0].backgroundColor = {!! $warnaBatangChartJS !!}; // Mengatur warna batang chart
+
+    // Konfigurasi bar chart
+    var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Tanggal',
+                },
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Pendapatan',
+                },
+            },
+        },
+    };
+
+    // Membuat bar chart dengan Chart.js
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+</script>
+
+
 </body>
 </html>

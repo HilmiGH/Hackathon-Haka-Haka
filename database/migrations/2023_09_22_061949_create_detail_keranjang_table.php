@@ -11,11 +11,12 @@ class CreateDetailKeranjangTable extends Migration
         Schema::create('detail_keranjang', function (Blueprint $table) {
             $table->id('id_detail_keranjang');
             $table->unsignedBigInteger('id_keranjang');
-            $table->foreign('id_keranjang')->references('id')->on('keranjang')->onDelete('cascade');
-            $table->string('nama_produk', 50);
-            $table->unsignedInteger('jumlah_produk');
-            $table->double('harga_produk', 20, 2);
+            $table->string('nama_produk');
+            $table->integer('jumlah_produk');
+            $table->decimal('harga_produk', 10, 2);
             $table->timestamps();
+
+            $table->foreign('id_keranjang')->references('id_keranjang')->on('keranjang');
         });
     }
 

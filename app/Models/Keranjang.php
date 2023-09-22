@@ -1,20 +1,23 @@
 <?php
 
-// app/Models/Keranjang.php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Keranjang extends Model
 {
-    use HasFactory;
-
-    protected $fillable = ['ip_pengguna']; // Izinkan untuk mengisi kolom alamat IP
+    protected $table = 'keranjang';
+    protected $primaryKey = 'id_keranjang'; // Menentukan primary key
+    protected $fillable = ['ip_pengguna'];
 
     public function detailKeranjang()
     {
-        return $this->hasMany(DetailKeranjang::class, 'id_keranjang', 'id');
+        return $this->hasMany(DetailKeranjang::class, 'id_keranjang');
+    }
+
+    public function transaksi()
+    {
+        return $this->hasOne(Transaksi::class, 'id_keranjang');
     }
 }
+

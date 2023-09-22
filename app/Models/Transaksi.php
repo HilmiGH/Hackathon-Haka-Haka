@@ -1,20 +1,17 @@
 <?php
 
-// app/Models/Transaksi.php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
+    protected $table = 'transaksis';
+    protected $primaryKey = 'id_transaksi'; // Menentukan primary key
+    protected $fillable = ['id_keranjang', 'total_harga', 'status_transaksi'];
 
-    protected $fillable = ['id_detail_keranjang', 'total_harga', 'status_transaksi'];
-
-    public function detailKeranjang()
+    public function keranjang()
     {
-        return $this->hasMany(DetailKeranjang::class, 'id_detail_keranjang', 'id_detail_keranjang');
+        return $this->belongsTo(Keranjang::class, 'id_keranjang');
     }
 }

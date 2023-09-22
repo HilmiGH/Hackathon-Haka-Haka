@@ -9,7 +9,7 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $table = 'produk';
+    protected $table = 'produks';
 
     protected $primaryKey = 'id_prod';
 
@@ -36,3 +36,5 @@ class Produk extends Model
         return $this->belongsTo(KategoriProduk::class, 'id_kategori');
     }
 }
+
+
