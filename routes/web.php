@@ -33,3 +33,8 @@ Auth::routes();
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
 Route::get('/detailproduk', [App\Http\Controllers\KatalogController::class, 'detail'])->name('detailproduk');
+
+//temp
+Route::get('/pos', function () {
+    return view('admin.pos-dashboard');
+});
