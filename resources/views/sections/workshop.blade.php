@@ -495,7 +495,7 @@
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 700;
-                    line-height: normal;">
+                    line-height: normal;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Ikut Workshop
                     </span>
                 </button>
@@ -532,6 +532,67 @@
             </div>
           </div>
     </aside>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulir Workshop</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="WorkshopInputName" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="WorkshopInputName" aria-describedby="nameHelp">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="WorkshopKIMORNOT" id="WorkshopKIM">
+                <label class="form-check-label" for="WorkshopKIM">
+                    KIM
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="WorkshopKIMORNOT" id="WorkshopBukanKIM">
+                <label class="form-check-label" for="WorkshopBukanKIM">
+                    Bukan KIM
+                </label>
+            </div>
+        </div>
+        <div style="margin-left: 20px">Harga:
+            <span id="hargaDisplay">
+                25000
+            </span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+    // Get references to the radio buttons and the Harga display span
+    const workshopKIMRadio = document.getElementById("WorkshopKIM");
+    const workshopBukanKIMRadio = document.getElementById("WorkshopBukanKIM");
+    const hargaDisplay = document.getElementById("hargaDisplay");
+
+    // Add an event listener to both radio buttons
+    workshopKIMRadio.addEventListener("change", updateHarga);
+    workshopBukanKIMRadio.addEventListener("change", updateHarga);
+
+    // Function to update the Harga based on the selected radio button
+    function updateHarga() {
+        if (workshopKIMRadio.checked) {
+            // If WorkshopKIM is selected, set Harga to 0
+            hargaDisplay.textContent = "0";
+        } else {
+            // If WorkshopBukanKIM is selected, set Harga to 25000
+            hargaDisplay.textContent = "25000";
+        }
+    }
+</script>
+
 
 @endsection

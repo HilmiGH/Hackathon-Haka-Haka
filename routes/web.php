@@ -37,7 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
     Route::get('/get-penjualan-harian', [SumCardController::class, 'getTotalPenjualanHarian']);
 
-
+    Route::get('/profile', function () {
+        return view('sections.profile');
+    });
 
 
     Route::get('/umkms/info', function () {
