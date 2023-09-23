@@ -4,6 +4,7 @@
     <section style="background-color: rgba(255, 255, 255, 0.15); background-image: url({{ asset('img/LP-Sect-1-BG.png') }});">
         <div class="position-relative">
             <img class="position-absolute" src="{{ asset('img/LP-Sect1-Decor.png') }}" alt="" style="top: 85px; left: 200px">
+            <img class="position-absolute" src="{{ asset('img/LP-Sect1-Crew.png') }}" alt="" style="top: 230px; left: 300px; height: auto; width: 800px">
         </div>
         <h1 style="padding-top: 30px ;text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); font-family: Lato Black; font-size: 64px; font-weight: 900; text-align: center; background: var(--black-brown, linear-gradient(168deg, #654B36 0.97%, #000 158.49%)); background-clip: text;
         background-clip: text;

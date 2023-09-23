@@ -127,7 +127,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;">Rekomendasi Artikel Lainnya</h3>
-    <div class="justify-content-center d-flex" style="margin-bottom: 200px; gap: 20px">
+    <div class="justify-content-center d-flex" style="margin-bottom: 350px; gap: 20px">
         <div class="col-sm-4" style="max-height: 450px">
             <a href=""; style="text-decoration: none">
                 <div class="d-flex flex-column">
@@ -267,6 +267,9 @@
             </a>
         </div>
     </div>
+</div>
+<div class="position-relative">
+    <img style="bottom: -35px" class="position-absolute" src="{{ asset('img/Detail-Berita-Bottom.png') }}" alt="">
 </div>
 
 @endsection
