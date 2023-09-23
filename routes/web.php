@@ -25,6 +25,10 @@ Route::get('/berita', function () {
     return view('sections.berita');
 });
 
+Route::get('/workshop', function () {
+    return view('sections.workshop');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
