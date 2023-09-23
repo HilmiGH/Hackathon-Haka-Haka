@@ -32,7 +32,7 @@
         left: -4px;
         border: 4px solid transparent;
         border-radius: 30px;
-        background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%);
+        background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%);
         z-index: -1;
     }
 
@@ -42,7 +42,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card register-content">
-                            <h4 style="font-weight: 900; font-size: 36px; text-align: center; background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%); -webkit-background-clip: text; color: transparent;">Create An Account</h4>
+                            <h4 style="font-weight: 900; font-size: 36px; text-align: center; background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%); -webkit-background-clip: text; color: transparent;">Create An Account</h4>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary" style="border: none; outline: none; background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%); width: 120px; height: 40px;">
+                            <button type="submit" class="btn btn-primary" style="border: none; outline: none; background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%); width: 120px; height: 40px;">
                                 <span style="color: #FFF; font-family: 'Lato', sans-serif; font-size: 20px; font-weight: 700; line-height: normal;">
                                     Masuk
                                 </span>

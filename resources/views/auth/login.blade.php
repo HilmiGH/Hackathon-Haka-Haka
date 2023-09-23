@@ -32,7 +32,7 @@
         left: -4px; /* Ubah ini untuk mengatur jarak antara border dan linear gradient */
         border: 4px solid transparent; /* Border transparan dengan ketebalan 4px */
         border-radius: 30px; /* Radius border */
-        background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%); /* Efek linear gradient pada border */
+        background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%); /* Efek linear gradient pada border */
         z-index: -1; /* Mengatur z-index untuk membuat latar belakang tetap di belakang */
     }
 
@@ -48,7 +48,7 @@
                         @csrf
                         <!-- Form Login -->
                         <div class="mb-3">
-                            <h4 style="font-weight: 900; font-size: 36px; text-align: center; background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%); -webkit-background-clip: text; color: transparent;">Welcome Admin</h4>
+                            <h4 style="font-weight: 900; font-size: 36px; text-align: center; background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%); -webkit-background-clip: text; color: transparent;">Welcome Admin</h4>
                         </div>
                         <div class="mb-3">
                             <label style="color: #1E1E1E; font-size: 20px; font-weight: 600; line-height: 30px" for="email" class="form-label">Username / Email Address</label>
@@ -74,7 +74,7 @@
                                 <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">Remember Me</label>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="border: none; outline: none; background: linear-gradient(168deg, #D17323 0.97%, #000 158.49%); width: 120px; height: 40px;">
+                            <button type="submit" class="btn btn-primary" style="border: none; outline: none; background: linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%); width: 120px; height: 40px;">
                                 <span style="color: #FFF; font-family: 'Lato', sans-serif; font-size: 20px; font-weight: 700; line-height: normal;">
                                     Masuk
                                 </span>

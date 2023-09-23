@@ -158,336 +158,54 @@
                 line-height: normal;
                 margin-bottom: 40px">Temukan Produk Terbaik Buatan UMKM Pilihan Mojo Works</h3>
             </div>
-            <div id="carousel2" class="carousel slide" style="height: 1030px">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            @php
+            // Ambil data UMKM dari database
+            $umkms = DB::table('umkms')->get();
+            @endphp
+            <div id="umkmCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @php
+                    $chunkedUmkm = $umkms->chunk(6); // Membagi data UMKM menjadi kelompok berisi 6 item
+                    $active = 'active'; // Untuk mengidentifikasi slider pertama sebagai slider aktif
+                    @endphp
+
+                    @foreach($chunkedUmkm as $umkmGroup)
+                        <div class="carousel-item {{ $active }}">
+                            <div class="row justify-content-center">
+                                @foreach($umkmGroup as $umkm)
+                                    <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                        <a href="{{ url('detailumkm', ['id' => $umkm->id_umkm]) }}" style="text-decoration: none">
+                                            <div class="card" style="border-radius: 30px;
+                                            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                                <img class="card-img-top mx-auto" src="{{ asset('img/UMKM Image/' . $umkm->umkm_img) }}" style="height:300px; width:90%;margin-top:5%">
+                                                <div class="card-body">
+                                                    <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">{{ $umkm->nama_usaha }}</h4>
+                                                    <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">{{ $umkm->kategori_usaha }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @php
+                        $active = ''; // Setel slider aktif ke kosong setelah slider pertama
+                        @endphp
+                    @endforeach
                 </div>
-                <div class="carousel-inner" style="height: 1050px">
-                    <div class="carousel-item active">
-                        <div class="d-block w-100" style="">
-                            <div class="row justify-content-center" style="margin-bottom: 70px">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="d-block w-100" style="">
-                            <div class="row justify-content-center" style="margin-bottom: 70px">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="d-block w-100" style="">
-                            <div class="row justify-content-center" style="margin-bottom: 70px">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                    <a href=""; style="text-decoration: none">
-                                        <div class="card" style="border-radius: 30px;
-                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
-                                                style="width:90%;margin-top:5%">
-                                            <div class="card-body">
-                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
-                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                                    UMKM KERAJINAN
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+
+                <!-- Tombol navigasi carousel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#umkmCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#umkmCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div>
+
     </section>
     <section style="margin-bottom: 90px">
         <div class="position-relative">
@@ -576,7 +294,7 @@
             </div>
             <div class="d-flex flex-column" style="align-items: center">
                 <div class="position-relative">
-                    
+
                 </div>
                 <h1 style=" margin-top: 100px ;text-align: center; font-size: 96px; font-weight: 900; color: transparent; margin-bottom: 10px; line-height: 90% ; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                 background-clip: text;

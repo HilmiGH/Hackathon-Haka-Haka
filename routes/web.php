@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SumCardController;
 use App\Http\Controllers\UpdateUmkmController;
-
+use App\Http\Controllers\UpdateProdukController;
+use App\Http\Controllers\ProdukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +60,13 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Route::get('/umkm/info/{id}', 'UmkmInfoController@info')->name('umkm.info');
+
+    Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk-create');
+    Route::post('/produk/store', [ProdukController::class, 'store'])->name('produk-store');
+
+    Route::get('/produk/edit/{id}', 'UpdateProdukController@edit')->name('produk-edit');
+    Route::post('/produk/update/{id}', 'UpdateProdukController@update')->name('produk-update');
+
 
 
 });

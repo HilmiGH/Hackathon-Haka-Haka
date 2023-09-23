@@ -314,11 +314,11 @@
                                 @php
                                 // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
                                 $umkm = DB::table('umkms')->where('id_umkm', request()->query('id'))->first();
-                            @endphp
-                            @php
-                            // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
-                            $produk = \DB::table('produks')->where('id_umkm', request()->query('id'))->first();
-                            @endphp
+                                @endphp
+                                @php
+                                // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                                $produk = \DB::table('produks')->where('id_umkm', request()->query('id'))->first();
+                                @endphp
 
                                 <div>
                                     <div>
@@ -486,63 +486,70 @@
             </div>
         </div>
     </div>
-    <!-- Modal Create Product-->
     <div class="modal fade" id="staticBackdropCreateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropCreateProductLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropCreateProductLabel">Edit Product</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropCreateProductLabel">Tambah Produk Baru</h1>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-center" style="margin-bottom: 30px">
                         <div class="d-flex flex-column">
                             <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
-                            <button class="btn" style="border-radius: 12px;
-                            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Ganti Foto Produk</button>
+                            <button class="btn" style="border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Ganti Foto Produk</button>
                         </div>
-                        <form action=""></form>
-                        <div class="d-flex">
-                            <div class="d-flex flex-column">
+                        <form method="POST" action="{{ route('produk-store') }}">
+                            @csrf
+                            <div class="d-flex">
                                 <div class="d-flex flex-column">
-                                    <div>
-                                        <label for="InputNamaProduk" class="form-label">Nama Produk</label>
-                                        <input type="text" placeholder="Tulis Nama Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
-                                    </div>
-                                    <div>
-                                        <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
-                                        <input type="text" placeholder="Tulis Jenis Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
-                                    </div>
-                                    <div>
-                                        <label for="InputHargaProduk" class="form-label">Harga Produk</label>
-                                        <input type="text" placeholder="Tulis Harga Produk Anda" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">
-                                    </div>
-                                    <div>
-                                        <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
-                                        <input type="text" placeholder="Tulis Nomor Pemesananan Produk Anda" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">
+                                    <div class="d-flex flex-column">
+                                        <div>
+                                            <label for="InputNamaProduk" class="form-label">Nama Produk</label>
+                                            <input type="text" name="nama_produk" placeholder="Tulis Nama Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
+                                        </div>
+                                        <div>
+                                            <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
+                                            <input type="text" name="kategori_produk" placeholder="Tulis Jenis Produk Anda" class="form-control" id="InputJenisProduk" aria-describedby="JenisProductHelp">
+                                        </div>
+                                        <div>
+                                            <label for="InputHargaProduk" class="form-label">Harga Produk</label>
+                                            <input type="text" name="harga_produk" placeholder="Tulis Harga Produk Anda" class="form-control" id="InputHargaProduk" aria-describedby="HargaProductHelp">
+                                        </div>
+                                        <div>
+                                            <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
+                                            <input type="text" name="nomor_pemesanan" placeholder="Tulis Nomor Pemesananan Produk Anda" class="form-control" id="InputPemesananProduk" aria-describedby="PemesananProductHelp">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" style="border-radius: 12px; height: 45px;
-                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 12px;
-                    background: #FFF;
-                    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);">
-                        <span style="text-align: center; height: 45px; font-size: 20px; font-weight: 600; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;">Batal</span>
-                    </button>
                 </div>
             </div>
         </div>
     </div>
+
+                    <div class="modal-footer">
+                        <button class="btn" style="border-radius: 12px; height: 45px;
+                            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 12px;
+                        background: #FFF;
+                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);">
+                            <span style="text-align: center; height: 45px; font-size: 20px; font-weight: 600; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;">Batal</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- Modal Edit Product-->
     <div class="modal fade" id="staticBackdropEditProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
+            <form method="POST" action="{{ route('produk-update', ['id' => $id]) }}">
+                @csrf
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropEditProductLabel">Edit Product</h1>
@@ -550,29 +557,62 @@
                 <div class="modal-body">
                     <div class="d-flex align-items-center" style="margin-bottom: 30px">
                         <div class="d-flex flex-column">
-                            <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
-                            <button class="btn" style="border-radius: 12px;
-                            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Ganti Foto Produk</button>
+                            @php
+                            // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                            $produk = DB::table('produks')->where('id_produk', request()->query('id'))->first();
+                            @endphp
+                            <input type="file" name="produk_img" id="produk_img" accept="image/*" style="display: none;">
+
+                            @if ($produk && $produk->produk_img)
+                                <img src="{{ asset('img/Produk Image/' . $produk->produk_img) }}" alt="Produk Image">
+                            @else
+                                <p>Gambar Produk tidak tersedia</p>
+                            @endif
+                            <button type="button" id="gantiFotoButton" class="btn" style="border-radius: 12px; height: 45px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); cursor: pointer;">Ganti Foto Profil</button>
+
                         </div>
+
                         <form action=""></form>
                         <div class="d-flex">
                             <div class="d-flex flex-column">
                                 <div class="d-flex flex-column">
                                     <div>
+                                        @php
+                                        // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                                        $umkm = DB::table('umkms')->where('id_umkm', request()->query('id'))->first();
+                                        @endphp
+                                        @php
+                                        // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                                        $produk = \DB::table('produks')->where('id_umkm', request()->query('id'))->first();
+                                        @endphp
                                         <label for="InputNamaProduk" class="form-label">Nama Produk</label>
-                                        <input type="text" placeholder="Batik Kenangan" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
+                                        <input type="text" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp"
+                                        @if ($produk)
+                                        value="{{ $produk->nama_produk }}"
+                                        @endif
+                                        >
                                     </div>
                                     <div>
                                         <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
-                                        <input type="text" placeholder="Pakaian Pria" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
+                                        <input type="text" placeholder="Pakaian Pria" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp"
+                                        @if ($produk)
+                                        value="{{ $produk->kategori_produk }}"
+                                        @endif>
                                     </div>
                                     <div>
                                         <label for="InputHargaProduk" class="form-label">Harga Produk</label>
-                                        <input type="text" placeholder="Rp 20.000" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">
+                                        <input type="text" placeholder="Rp 20.000" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp"
+                                        @if ($produk)
+                                        value="{{ $produk->harga_produk }}"
+                                        @endif
+                                        >
                                     </div>
                                     <div>
                                         <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
-                                        <input type="text" placeholder="+6287223568788" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">
+                                        <input type="text" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp"
+                                        @if ($produk)
+                                        value="{{ $produk->nomor_pemesanan }}"
+                                        @endif>
                                     </div>
                                 </div>
                             </div>
@@ -580,8 +620,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn" style="border-radius: 12px; height: 45px;
-                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
+                    <button type="submit" class="btn" style="border-radius: 12px; height: 45px;
+                    background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 12px;
                     background: #FFF;
                     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);">
@@ -592,7 +632,8 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
     </div>
 
 <!-- Bootstrap JavaScript Libraries -->

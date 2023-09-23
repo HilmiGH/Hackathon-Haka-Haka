@@ -77,6 +77,3 @@ class UpdateUmkmController extends Controller
         return redirect()->route('umkm-edit', ['id' => $id])->with('success', 'Data berhasil diperbarui');
     }
 }
-
-
-
