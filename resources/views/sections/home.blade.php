@@ -25,7 +25,7 @@
                 <h1 class="" style="text-align: center;
                 font-family: Lato;
                 font-size: 96px;
-                font-weight: 900; background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                font-weight: 900; background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); background: var(--gradddd, linear-gradient(147deg, #4DBFFF 7.92%, #000AFF 107.06%));
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -98,7 +98,7 @@
         <div class="position-relative">
             <img class="position-absolute" src="{{ asset('img/LP-Section3-Decor.png') }}" alt="">
         </div>
-        <div class="container">
+        <div class="container" style="min-height: 1150px">
             <div class="d-flex flex-column" style="align-items: center">
                 <div class="position-relative">
                     <img class="position-absolute" src="{{ asset('img/LP-Sect3-Title-Decor.png') }}" alt="" style="left: -575px; top: 25px">
@@ -120,9 +120,59 @@
                     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="height: 1050px">
                     <div class="carousel-item active">
-                        <div class="d-block w-100">
+                        <div class="d-block w-100" style="">
+                            <div class="row justify-content-center" style="margin-bottom: 70px">
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="row justify-content-center">
                                 <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
                                     <a href=""; style="text-decoration: none">
