@@ -138,7 +138,7 @@
                     background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Tambah UMKM Baru</button>
                 </div>
                 <div class="" style="">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered border-dark">
                         <thead>
                             <tr>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
