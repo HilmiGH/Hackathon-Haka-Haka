@@ -1,40 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
-    use HasFactory;
-
-    protected $table = 'produks';
-
-    protected $primaryKey = 'id_prod';
+    protected $table = 'produk';
 
     protected $fillable = [
-        'id_admin',
-        'nama_prod',
-        'harga_prod',
-        'desc_prod',
-        'spesifikasi_prod',
-        'ulasan_prod',
-        'rating_prod',
-        'foto_prod',
+        'umkm_id',
+        'nama_produk',
+        'kategori_produk',
+        'harga_produk',
+        'nomor_pemesanan',
     ];
 
-    // Definisikan relasi one-to-many dengan model Kustomisasi
-    public function kustomisasi()
+    public function umkm()
     {
-        return $this->hasMany(Kustomisasi::class, 'produk_id');
-    }
-
-    // Definisikan relasi many-to-one dengan model KategoriProduk
-    public function kategori()
-    {
-        return $this->belongsTo(KategoriProduk::class, 'id_kategori');
+        return $this->belongsTo(UmkmProfile::class, 'id_umkm');
     }
 }
-
-
