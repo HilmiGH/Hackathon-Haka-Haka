@@ -1,20 +1,40 @@
 @extends('layouts_web.app')
 @section('title', 'Beranda')
 @section('content')
-    <section style="margin-bottom: 50px">
-        <img src="{{ asset('img/LP-Sect_1.png') }}" alt="" style="width: 100vw">
-        <h1 style="display: none">Karsa Guna</h1>
-        <h3 style="display: none"></h3>
+    <section style="">
+        <h1 style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); margin-top: 35px; font-family: Lato Black; font-size: 64px; font-weight: 900; text-align: center; background: var(--black-brown, linear-gradient(168deg, #654B36 0.97%, #000 158.49%)); background-clip: text;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        Komunitas Informasi Masyarakat Mojo;">Komunitas Informasi Masyarakat Mojo</h1>
+        <h3 style="text-shadow: 0px 2.8260304927825928px 5.6520609855651855px rgba(0, 0, 0, 0.25); font-family: Lato Black; font-size: 90.433px; font-weight: 900; text-align: center; background: var(--gradddd, linear-gradient(147deg, #0896E5 19.92%, #1E1E1E 118.03%, #000 118.03%));
+        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; MOJOWORKS;
+        background-clip: text; -webkit-background-clip: text; color: transparent">MOJOWORKS</h3>
+        <div class="" style=" width: 100%; height: 110px ;background: var(--gradddd, linear-gradient(147deg, #0896E5 19.92%, #1E1E1E 118.03%, #000 118.03%));">
+        </div>
     </section>
     <section style="margin-bottom: 150px">
         <div class="position-relative">
-            <img src="" alt="">
+            <img class="position-absolute" src="{{asset('img/LP-Sect2-Decor.png') }}" alt="">
         </div>
         <div class="container">
             <div class="d-flex flex-column" style="align-items: center">
-                <img style="width: 864px" src="{{ asset('img/LP-Sect2-Title.png') }}" alt="">
-                <h1 style="display: none">Special Promotion</h1>
-                <h3 class="fw-semibold" style="font-size: 28px">Discover special promotions for our products and services</h3>
+                <div class="position-relative">
+                    <img class="position-absolute" style="left: -425px" src="{{ asset('img/LP-Section2-Title-Decor.png') }}" alt="">
+                </div>
+                <h1 class="" style="text-align: center;
+                font-family: Lato;
+                font-size: 96px;
+                font-weight: 900; background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                Liputan Kegiatan">Liputan Kegiatan</h1>
+                <h3 class="" style="color: #1E1E1E;
+                font-family: Lato;
+                font-size: 28px;
+                font-weight: 600;
+                ">IKUTI PELATIHAN MOJO WORKS YANG DIBUKA HARI INI</h3>
             </div>
             <div id="carousel1" class="carousel slide">
                 <div class="carousel-indicators">
@@ -24,13 +44,43 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/LP-SP-Promo.png') }}" class="d-block w-100" alt="...">
+                        <div class="position-relative">
+                            <div class="position-absolute" style="top: 500px">
+                                <div class="" style="width: 770px; height: 95px; border-top-right-radius: 999px; border-bottom-right-radius: 999px; padding: 10px; padding-inline: 40px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
+                                    <h2 style="color: #FFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 64px; font-weight: 800; ">Pentas Seni Keren</h2>
+                                </div>
+                                <div class="" style="width: 650px; height: 80px; border-bottom-right-radius: 30px; padding: 10px; padding-inline: 40px; background-color: white">
+                                    <h2 style="color: #0896E5; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 32px; font-weight: 600; ">Subtitle</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{{ asset('img/LP-Sect2-Img.png') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/LP-SP-Promo.png') }}" class="d-block w-100" alt="...">
+                        <div class="position-relative">
+                            <div class="position-absolute" style="top: 500px">
+                                <div class="" style="width: 770px; height: 95px; border-top-right-radius: 999px; border-bottom-right-radius: 999px; padding: 10px; padding-inline: 40px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
+                                    <h2 style="color: #FFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 64px; font-weight: 800; ">Pentas Seni Keren</h2>
+                                </div>
+                                <div class="" style="width: 650px; height: 80px; border-bottom-right-radius: 30px; padding: 10px; padding-inline: 40px; background-color: white">
+                                    <h2 style="color: #0896E5; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 32px; font-weight: 600; ">Subtitle</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{{ asset('img/LP-Sect2-Img.png') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/LP-SP-Promo.png') }}" class="d-block w-100" alt="...">
+                        <div class="position-relative">
+                            <div class="position-absolute" style="top: 500px">
+                                <div class="" style="width: 770px; height: 95px; border-top-right-radius: 999px; border-bottom-right-radius: 999px; padding: 10px; padding-inline: 40px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
+                                    <h2 style="color: #FFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 64px; font-weight: 800; ">Pentas Seni Keren</h2>
+                                </div>
+                                <div class="" style="width: 650px; height: 80px; border-bottom-right-radius: 30px; padding: 10px; padding-inline: 40px; background-color: white">
+                                    <h2 style="color: #0896E5; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 32px; font-weight: 600; ">Subtitle</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{{ asset('img/LP-Sect2-Img.png') }}" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
@@ -46,15 +96,25 @@
     </section>
     <section style="margin-bottom: 50px">
         <div class="position-relative">
-
+            <img class="position-absolute" src="{{ asset('img/LP-Section3-Decor.png') }}" alt="">
         </div>
         <div class="container">
             <div class="d-flex flex-column" style="align-items: center">
-                <img style="" src="{{ asset('img/LP-Section3-Title.png') }}" alt="">
-                <h1 style="display: none">Our Product</h1>
-                <h3 class="fw-semibold" style="font-size: 28px">Explore our exclusive collection now at a special price</h3>
+                <div class="position-relative">
+                    <img class="position-absolute" src="{{ asset('img/LP-Sect3-Title-Decor.png') }}" alt="" style="left: -575px; top: 25px">
+                </div>
+                <h1 style="text-align: center; font-size: 96px; font-weight: 900; color: transparent; margin-bottom: 0px; line-height: 90% ; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;">UMKM MOJO</h1>
+                <h3 class="" style="color: #1E1E1E;
+                font-family: Lato;
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;">Temukan Produk Terbaik Buatan UMKM Pilihan Mojo Works</h3>
             </div>
-            <div id="carousel2" class="carousel slide">
+            <div id="carousel2" class="carousel slide" style="height: 600px">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -62,7 +122,58 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/LP-SP-Promo.png') }}" class="d-block w-100" alt="...">
+                        <div class="d-block w-100">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
+                                    <a href=""; style="text-decoration: none">
+                                        <div class="card" style="border-radius: 30px;
+                                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                                        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                                            <img class="card-img-top mx-auto" src="{{ asset('img/produk.png') }}" alt="Card image"
+                                                style="width:90%;margin-top:5%">
+                                            <div class="card-body">
+                                                <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">LEDEVIAR</h4>
+                                                <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
+                                                    UMKM KERAJINAN
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/LP-SP-Promo.png') }}" class="d-block w-100" alt="...">
