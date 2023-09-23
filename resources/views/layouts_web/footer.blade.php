@@ -1,4 +1,4 @@
-<div class="" style="background-color: #36221C">
+<div class="" style="background-color: #052255">
     <div class="container text-start" style="padding-block: 50px">
         <div class="row align-items-center">
             <div class="row">
