@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('sections.home');
 });
+
+Route::get('/berita', function () {
+    return view('sections.berita');
+});
