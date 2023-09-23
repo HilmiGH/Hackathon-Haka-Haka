@@ -38,3 +38,7 @@ Route::get('/detailproduk', [App\Http\Controllers\KatalogController::class, 'det
 Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
+
+Route::get('/product-dashboard', function () {
+    return view('admin.product-dashboard');
+});
