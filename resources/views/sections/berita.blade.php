@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_web.app')
 
 @section('content')
     {{-- <style>
@@ -29,9 +29,13 @@
             display: block;
         }
     </style> --}}
-
-    <body>
+    <div class="position-relative">
+        <img class="position-absolute" src="{{ asset('img/LP-Sect2-Decor.png') }}" alt="" style="top: -30px">
+    </div>
         <div class="container" style="margin-top:20px">
+            <h1>
+                
+            </h1>
             <div class="container" style=" display: flex; justify-content: center; align-items: center">
                 <button class="filter-button btn btn-primary" style="background-color:blue; margin:10px"
                     onclick="showAllContent()">All</button>
@@ -142,5 +146,4 @@
 
             showAllContent();
         </script>
-    </body>
 @endsection
