@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     protected $table = 'produk';
-
+    protected $primaryKey = 'id_produk'; // Menentukan primary key
     protected $fillable = [
-        'umkm_id',
+        'id_produk',
         'nama_produk',
         'kategori_produk',
         'harga_produk',

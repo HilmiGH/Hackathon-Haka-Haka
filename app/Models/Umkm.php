@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Umkm extends Model
 {
     protected $table = 'umkms';
-
+    protected $primaryKey = 'id_produk'; // Menentukan primary key
     protected $fillable = [
         'nama_usaha',
         'kategori_usaha',
@@ -23,6 +23,6 @@ class Umkm extends Model
 
     public function produk()
     {
-        return $this->hasMany(Produk::class, 'umkm_id');
+        return $this->hasMany(Produk::class, 'id_umkm');
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SumCardController;
+use App\Http\Controllers\UmkmController;
 
 
 /*
@@ -28,6 +29,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
     Route::get('/get-penjualan-harian', [SumCardController::class, 'getTotalPenjualanHarian']);
 
+    Route::get('/umkms/info', function () {
+        return view('admin.umkm-info-dashboard');
+    })->name('admin.umkm-info-dashboard');
+
+    Route::get('/umkms', 'UmkmController@index')->name('umkms.index');
+    Route::get('/umkms/{id}', 'UmkmController@show')->name('umkms.show');
+
+
 });
 
 Auth::routes();
@@ -41,9 +50,8 @@ Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
 
-Route::get('/umkm', function () {
-    return view('admin.umkm-dashboard');
-});
+
+
 
 Route::get('/umkm/info', function () {
     return view('admin.umkm-info-dashboard');
