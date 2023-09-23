@@ -127,7 +127,7 @@
                         <tbody>
                             @php
                             // Ambil data UMKM dari database
-                            $umkms = DB::table('umkms')->take(10)->get();
+                            $umkms = DB::table('umkms')->get();
                             @endphp
 
                             @foreach ($umkms as $umkm)
@@ -137,8 +137,9 @@
                                 <td>{{ $umkm->kategori_usaha }}</td>
                                 <td>{{ $umkm->rating }}</td>
                                 <td>
-                                    <a href="{{ route('admin.umkm-info-dashboard', ['id' => $umkm->id_umkm]) }}" class="btn" style="background-color: deepskyblue">DETAIL</a>
+                                    <a href="/umkms/info?id={{ $umkm->id_umkm }}" class="btn" style="background-color: deepskyblue">Button</a>
                                 </td>
+
 
                             </tr>
                             @endforeach
