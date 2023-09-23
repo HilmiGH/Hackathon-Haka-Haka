@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SumCardController;
-use App\Http\Controllers\UmkmInfoController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +31,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
     Route::get('/get-penjualan-harian', [SumCardController::class, 'getTotalPenjualanHarian']);
 
-    Route::get('/umkm', function () {
-        return view('umkm-dashboard');
-    })->name('admin.umkm-dashboard');
+
+
+
+    Route::get('/umkms/info', function () {
+        // Retrieve the 'id' parameter from the query string
+        $id = request('id');
+
+        // Add your logic here to retrieve and display information based on the 'id'
+        // For example, you can use $id to fetch data from your database
+
+        return view('admin.umkm-info-dashboard', ['id' => $id]);
+    });
+
+
 
     // Route::get('/umkm/info/{id}', 'UmkmInfoController@info')->name('umkm.info');
 

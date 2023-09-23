@@ -26,6 +26,11 @@
     font-family: Lato;
 
     }
+    button:disabled {
+    color: #fff !important; /* Warna teks putih dengan !important */
+    background-color: #030000 !important; /* Warna latar belakang abu-abu dengan !important */
+    }
+
 
     .dashboard-container {
       display: flex;
@@ -133,22 +138,22 @@
                 <div class="d-flex align-items-center" style="margin-bottom: 30px">
                     <div class="d-flex flex-column">
                         <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
-                        <button class="btn" style="border-radius: 12px;
-                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Ganti Foto Profil</button>
+                        <button id="gantiFotoButton" class="btn" style="border-radius: 12px; height: 45px;
+                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); display: none;">Ganti Foto Profil</button>
                     </div>
-                    <form action=""></form>
                     <div class="d-flex">
+
                         <div class="d-flex flex-column">
                             <div class="d-flex flex-row">
                                 <div>
                                     <div>
                                         <label for="InputNamaUsaha" class="form-label">Nama Usaha</label>
-                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_usaha') }}" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp">
+                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_usaha') }}" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp" disabled>
                                     </div>
 
                                     <div>
                                         <label for="InputKatagori" class="form-label">Kategori Usaha</label>
-                                        <select class="form-select" aria-label="Default select example" id="InputKatagori">
+                                        <select class="form-select" aria-label="Default select example" id="InputKatagori" disabled>
                                             <option value="" disabled>Pilih Kategori Usaha Anda</option>
                                             <option value="Makanan">Makanan</option>
                                             <option value="Minuman">Minuman</option>
@@ -175,7 +180,7 @@
 
                             <div>
                                 <label for="InputDeskripsiUsaha" class="form-label">Deskripsi Usaha</label>
-                                <textarea class="form-control" id="InputDeskripsiUsaha" rows="2">
+                                <textarea disabled class="form-control" id="InputDeskripsiUsaha" rows="2">
                                     {{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('deskripsi_usaha') }}
                                 </textarea>
                             </div>
@@ -184,30 +189,80 @@
                                 <div>
                                     <div>
                                         <label for="InputPemilikUsaha" class="form-label">Nama Pemilik</label>
-                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_pemilik') }}" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp">
+                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_pemilik') }}" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp">
                                     </div>
 
                                     <div>
                                         <label for="InputWAUsaha" class="form-label">Nomor WhatsApp</label>
-                                        <input type="text" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp">
+                                        <input type="text" disabled value="{{ DB::table('produks')->where('id_umkm', request()->query('id'))->value('nomor_pemesanan') }}" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputIzinUsaha" class="form-label">Surat Izin Usaha</label>
-                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('surat_izin_usaha') }}" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp">
+                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('surat_izin_usaha') }}" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputAlamatUsaha" class="form-label">Alamat Usaha</label>
-                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('alamat_usaha') }}" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp">
+                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('alamat_usaha') }}" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp">
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <div id="saveCancelButtons" class="d-flex justify-content-end">
-                                    <<button id="simpanButton" class="btn" style="border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
-                                    <button>Batal</button>
-                                </div>
+                                <button id="editProfileButton" class="btn" style="border-radius: 12px; height: 45px;
+                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Edit Profile</button>
+                            <button id="simpanButton" class="btn" style="border-radius: 12px; height: 45px;
+                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); display: none;">Simpan</button>
+                            <button id="batalButton" type="button" class="btn btn-secondary" style="border-radius: 12px;
+                                background: #FFF; color: #000; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15); display: none;">Batal</button>
 
-                                <button id="editProfileButton" class="btn" style="border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Edit Profile</button>
+
+                            <script>
+                            // Fungsi untuk menampilkan tombol "Edit Profile" dan menyembunyikan "Simpan", "Batal", dan "Ganti Foto Profil"
+                            function showEditProfileButton() {
+                                document.getElementById('simpanButton').style.display = 'none';
+                                document.getElementById('batalButton').style.display = 'none';
+                                document.getElementById('gantiFotoButton').style.display = 'none';
+                                document.getElementById('editProfileButton').style.display = 'block';
+                            }
+
+                            // Fungsi untuk menampilkan tombol "Simpan", "Batal", dan "Ganti Foto Profil" serta menyembunyikan "Edit Profile"
+                            function showSimpanBatalGantiFotoButtons() {
+                                document.getElementById('simpanButton').style.display = 'block';
+                                document.getElementById('batalButton').style.display = 'block';
+                                document.getElementById('gantiFotoButton').style.display = 'block';
+                                document.getElementById('editProfileButton').style.display = 'none';
+                            }
+
+                            // Mengatur event listener untuk tombol "Edit Profile"
+                            var editProfileButton = document.getElementById('editProfileButton');
+                            if (editProfileButton) {
+                                editProfileButton.addEventListener('click', function () {
+                                    showSimpanBatalGantiFotoButtons();
+                                    sessionStorage.setItem('simpanBatalVisible', 'true');
+                                });
+                            }
+
+                            // Mengatur event listener untuk tombol "Batal"
+                            var batalButton = document.getElementById('batalButton');
+                            if (batalButton) {
+                                batalButton.addEventListener('click', function () {
+                                    showEditProfileButton();
+                                    sessionStorage.removeItem('simpanBatalVisible');
+                                });
+                            }
+
+                            // Memeriksa status tombol "Edit Profile" dari sessionStorage saat halaman dimuat
+                            var simpanBatalVisible = sessionStorage.getItem('simpanBatalVisible');
+                            if (simpanBatalVisible === 'true') {
+                                showSimpanBatalGantiFotoButtons();
+                            } else {
+                                showEditProfileButton();
+                            }
+
+                            // Mengatur event listener saat halaman dimuat ulang
+                            window.addEventListener('beforeunload', function () {
+                                sessionStorage.removeItem('simpanBatalVisible');
+                            });
+                            </script>
 
                             </div>
 
@@ -233,24 +288,33 @@
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                 background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">KATAGORI</th>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">STOK</th>
+                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">HARGA</th>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                 background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
-                                <?php for ($i = 1; $i <= 10; $i++) { ?>
+
+                            @php
+                            // Ambil data UMKM dari database
+                            $produks = DB::table('produks')->get();
+                            @endphp
+
+                            @foreach ($produks as $produk)
+                                @if ($produk->id_umkm == request()->query('id'))
                                     <tr>
-                                        <td><?php echo $i; ?></td>
                                         <td><img src="{{ asset('img/dashboard-product-img.png') }}" alt=""></td>
-                                        <td>Nama Produk <?php echo $i; ?></td>
-                                        <td>Katagori <?php echo $i; ?></td>
-                                        <td>Stok <?php echo $i; ?></td>
+                                        <td>{{ $produk->id_produk }}</td>
+                                        <td>{{ $produk->nama_produk }}</td>
+                                        <td>{{ $produk->kategori_produk }}</td>
+                                        <td>{{ $produk->harga_produk }}</td>
                                         <td>
-                                            <button class="btn" style="background-color: deepskyblue" data-bs-toggle="modal" data-bs-target="#staticBackdropEditProduct">Button</button>
+                                            <button class="btn" style="background-color: deepskyblue" data-bs-toggle="modal" data-bs-target="#staticBackdropEditProduct">Edit</button>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                                @endif
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -375,21 +439,77 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const editProfileButton = document.querySelector('#editProfileButton');
-        const saveCancelButtons = document.querySelector('.save-cancel-buttons');
 
-        editProfileButton.addEventListener('click', function () {
-            editProfileButton.style.display = 'none';
-            saveCancelButtons.style.display = 'block';
-        });
+
+
+
+<script>
+    // Menangkap elemen-elemen yang akan diubah status disabled-nya
+    var inputNamaUsaha = document.getElementById('InputNamaUsaha');
+    var inputKatagori = document.getElementById('InputKatagori');
+    var inputDeskripsiUsaha = document.getElementById('InputDeskripsiUsaha');
+    var inputPemilikUsaha = document.getElementById('InputPemilikUsaha');
+    var inputWAUsaha = document.getElementById('InputWAUsaha');
+    var inputIzinUsaha = document.getElementById('InputIzinUsaha');
+    var inputAlamatUsaha = document.getElementById('InputAlamatUsaha');
+
+    // Tombol "Edit Profile"
+    var editProfileButton = document.getElementById('editProfileButton');
+
+    // Tombol "Simpan" dan "Batal"
+    var simpanButton = document.getElementById('simpanButton');
+    var batalButton = document.querySelector('#saveCancelButtons button:last-child');
+
+    // Mengecek apakah status "Edit Profile" sudah diset
+    var isEditing = localStorage.getItem('isProfileEditing');
+
+    // Fungsi untuk mengaktifkan input
+    function enableInputs() {
+        inputNamaUsaha.removeAttribute('disabled');
+        inputKatagori.removeAttribute('disabled');
+        inputDeskripsiUsaha.removeAttribute('disabled');
+        inputPemilikUsaha.removeAttribute('disabled');
+        inputWAUsaha.removeAttribute('disabled');
+        inputIzinUsaha.removeAttribute('disabled');
+        inputAlamatUsaha.removeAttribute('disabled');
+        simpanButton.style.display = 'block';
+        batalButton.style.display = 'block';
+    }
+
+    // Fungsi untuk menonaktifkan input
+    function disableInputs() {
+        inputNamaUsaha.setAttribute('disabled', 'disabled');
+        inputKatagori.setAttribute('disabled', 'disabled');
+        inputDeskripsiUsaha.setAttribute('disabled', 'disabled');
+        inputPemilikUsaha.setAttribute('disabled', 'disabled');
+        inputWAUsaha.setAttribute('disabled', 'disabled');
+        inputIzinUsaha.setAttribute('disabled', 'disabled');
+        inputAlamatUsaha.setAttribute('disabled', 'disabled');
+        simpanButton.style.display = 'none';
+        batalButton.style.display = 'none';
+    }
+
+    // Mengatur event listener untuk tombol "Edit Profile"
+    editProfileButton.addEventListener('click', function () {
+        enableInputs();
+
+        // Menyimpan status "Edit Profile" ke local storage
+        localStorage.setItem('isProfileEditing', 'true');
     });
-</script>
 
-<script>
+    // Memeriksa apakah status "Edit Profile" sudah diaktifkan saat halaman dimuat
+    if (isEditing === 'true') {
+        enableInputs();
+    } else {
+        // Jika belum diaktifkan, maka input-input akan dalam keadaan disabled
+        disableInputs();
+    }
 
-</script>
+    // Mengatur event listener saat halaman dimuat ulang
+    window.addEventListener('beforeunload', function () {
+        localStorage.removeItem('isProfileEditing');
+    });
+    </script>
 
 </body>
 </html>
