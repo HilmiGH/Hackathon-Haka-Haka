@@ -53,6 +53,13 @@ Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
 
+Route::get('/umkm', function () {
+    return view('admin.umkm-dashboard');
+});
+
+Route::get('/umkm/info', function () {
+    return view('admin.umkm-info-dashboard');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
@@ -61,13 +68,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
     Route::get('/get-penjualan-harian', [SumCardController::class, 'getTotalPenjualanHarian']);
-
-    Route::get('/umkms/info', function () {
-        return view('admin.umkm-info-dashboard');
-    })->name('admin.umkm-info-dashboard');
-
-
-
 
 });
 
@@ -82,8 +82,9 @@ Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
 
-
-
+Route::get('/umkm', function () {
+    return view('admin.umkm-dashboard');
+});
 
 Route::get('/umkm/info', function () {
     return view('admin.umkm-info-dashboard');
