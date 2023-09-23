@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SumCardController;
+use App\Http\Controllers\UpdateUmkmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,13 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.umkm-info-dashboard', ['id' => $id]);
     });
 
+
+
+        // Display the edit form
+        Route::get('/umkms/info?id={id}', [UpdateUmkmController::class, 'edit'])->name('umkm-edit');
+
+        // Handle form submission
+        Route::post('/umkm/update/{id}', [UpdateUmkmController::class, 'update'])->name('umkm-update');
 
 
     // Route::get('/umkm/info/{id}', 'UmkmInfoController@info')->name('umkm.info');

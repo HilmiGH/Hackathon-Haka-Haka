@@ -133,142 +133,155 @@
                     -webkit-text-fill-color: transparent;">Profil UMKM</h1>
                 </div>
                 <div>
-                    <button></button>
                 </div>
-                <div class="d-flex align-items-center" style="margin-bottom: 30px">
-                    <div class="d-flex flex-column">
-                        <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
-                        <button id="gantiFotoButton" class="btn" style="border-radius: 12px; height: 45px;
-                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); display: none;">Ganti Foto Profil</button>
-                    </div>
-                    <div class="d-flex">
+                <form method="POST" action="{{ route('umkm-update', ['id' => $id]) }}">
+                    @csrf
+
+                    <div class="d-flex align-items-center" style="margin-bottom: 30px">
+
+                        <div class="d-flex flex-column">
+                            @php
+                            // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                            $umkm = DB::table('umkms')->where('id_umkm', request()->query('id'))->first();
+                            @endphp
+                            <input type="file" name="umkm_img" id="umkm_img" accept="image/*" style="display: none;">
+
+                            @if ($umkm && $umkm->umkm_img)
+                                <img src="{{ asset('img/UMKM Image/' . $umkm->umkm_img) }}" alt="UMKM Image">
+                            @else
+                                <p>Gambar UMKM tidak tersedia</p>
+                            @endif
+                            <button type="button" id="gantiFotoButton" class="btn" style="border-radius: 12px; height: 45px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); cursor: pointer;">Ganti Foto Profil</button>
+
+                        </div>
+
+
 
                         <div class="d-flex flex-column">
                             <div class="d-flex flex-row">
+                                @php
+                                // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                                $umkm = DB::table('umkms')->where('id_umkm', request()->query('id'))->first();
+                            @endphp
+                            @php
+                            // Ambil data dari tabel "umkms" berdasarkan ID atau kriteria lainnya
+                            $produk = \DB::table('produks')->where('id_umkm', request()->query('id'))->first();
+                            @endphp
+
                                 <div>
                                     <div>
                                         <label for="InputNamaUsaha" class="form-label">Nama Usaha</label>
-                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_usaha') }}" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp" disabled>
+                                        @if ($umkm !== null)
+                                            <!-- Akses properti $umkm di sini -->
+                                            <input type="text" value="{{ $umkm->nama_usaha }}" name="nama_usaha" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp" disabled>
+                                        @else
+                                            <!-- Handle jika $umkm bernilai null -->
+                                            <p>Data umkm tidak ditemukan</p>
+                                        @endif
+
                                     </div>
 
                                     <div>
                                         <label for="InputKatagori" class="form-label">Kategori Usaha</label>
-                                        <select class="form-select" aria-label="Default select example" id="InputKatagori" disabled>
+                                        <select class="form-select" aria-label="Default select example" id="InputKatagori" name="kategori_usaha" disabled>
                                             <option value="" disabled>Pilih Kategori Usaha Anda</option>
-                                            <option value="Makanan">Makanan</option>
-                                            <option value="Minuman">Minuman</option>
-                                            <option value="Kerajinan">Kerajinan</option>
-                                            <option value="Jasa">Jasa</option>
+                                            <option value="Makanan" @if ($umkm && $umkm->kategori_usaha === 'Makanan') selected @endif>Makanan</option>
+                                            <option value="Minuman" @if ($umkm && $umkm->kategori_usaha === 'Minuman') selected @endif>Minuman</option>
+                                            <option value="Kerajinan" @if ($umkm && $umkm->kategori_usaha === 'Kerajinan') selected @endif>Kerajinan</option>
+                                            <option value="Jasa" @if ($umkm && $umkm->kategori_usaha === 'Jasa') selected @endif>Jasa</option>
                                         </select>
-
-                                        <script>
-                                        window.addEventListener('DOMContentLoaded', function () {
-                                            var selectElement = document.getElementById('InputKatagori');
-                                            var selectedValue = "{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('kategori_usaha') }}";
-
-                                            // Mengatur nilai seleksi pada elemen <select>
-                                            for (var i = 0; i < selectElement.options.length; i++) {
-                                                if (selectElement.options[i].value === selectedValue) {
-                                                    selectElement.options[i].selected = true;
-                                                    break;
-                                                }
-                                            }
-                                        });
-                                        </script>
-
-                                    </div>
-
-                            <div>
-                                <label for="InputDeskripsiUsaha" class="form-label">Deskripsi Usaha</label>
-                                <textarea disabled class="form-control" id="InputDeskripsiUsaha" rows="2">
-                                    {{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('deskripsi_usaha') }}
-                                </textarea>
-                            </div>
-
-                                </div>
-                                <div>
-                                    <div>
-                                        <label for="InputPemilikUsaha" class="form-label">Nama Pemilik</label>
-                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_pemilik') }}" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp">
                                     </div>
 
                                     <div>
-                                        <label for="InputWAUsaha" class="form-label">Nomor WhatsApp</label>
-                                        <input type="text" disabled value="{{ DB::table('produks')->where('id_umkm', request()->query('id'))->value('nomor_pemesanan') }}" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp">
+                                        <label for="InputDeskripsiUsaha" class="form-label">Deskripsi Usaha</label>
+                                        <textarea class="form-control" name="deskripsi_usaha" id="InputDeskripsiUsaha" rows="2" disabled>
+                                            @if ($umkm)
+                                                {{ $umkm->deskripsi_usaha }}
+                                            @endif
+                                        </textarea>
+                                    </div>
                                     </div>
                                     <div>
-                                        <label for="InputIzinUsaha" class="form-label">Surat Izin Usaha</label>
-                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('surat_izin_usaha') }}" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp">
+                                        <div>
+                                            <label for="InputPemilikUsaha" class="form-label">Nama Pemilik</label>
+                                            <input type="text" name="nama_pemilik" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp" disabled
+                                                @if ($umkm)
+                                                    value="{{ $umkm->nama_pemilik }}"
+                                                @endif
+                                            >
+                                        </div>
+
+                                        <div>
+                                            <label for="InputWAUsaha" class="form-label">Nomor WhatsApp</label>
+                                            <input type="text" name="nomor_pemesanan" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp" disabled
+                                                @if ($produk)
+                                                    value="{{ $produk->nomor_pemesanan }}"
+                                                @endif
+                                            >
+                                        </div>
+                                        <div>
+                                            <label for="InputIzinUsaha" class="form-label">Surat Izin Usaha</label>
+                                            <input type="text" name="surat_izin_usaha" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp" disabled
+                                                @if ($umkm)
+                                                    value="{{ $umkm->surat_izin_usaha }}"
+                                                @endif
+                                            >
+                                        </div>
+                                        <div>
+                                            <label for="InputAlamatUsaha" class="form-label">Alamat Usaha</label>
+                                            <input type="text" name="alamat_usaha" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp" disabled
+                                                @if ($umkm)
+                                                    value="{{ $umkm->alamat_usaha }}"
+                                                @endif
+                                            >
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label for="InputAlamatUsaha" class="form-label">Alamat Usaha</label>
-                                        <input type="text" disabled value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('alamat_usaha') }}" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp">
-                                    </div>
-                                </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button id="editProfileButton" class="btn" style="border-radius: 12px; height: 45px;
-                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Edit Profile</button>
-                            <button id="simpanButton" class="btn" style="border-radius: 12px; height: 45px;
+                                <button id="editProfileButton" type="button" class="btn" style="border-radius: 12px; height: 45px;
+                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));" onclick="enableForm()">Edit Profile</button>
+                                <button id="simpanButton" class="btn" style="border-radius: 12px; height: 45px;
                                 background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); display: none;">Simpan</button>
-                            <button id="batalButton" type="button" class="btn btn-secondary" style="border-radius: 12px;
-                                background: #FFF; color: #000; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15); display: none;">Batal</button>
-
-
-                            <script>
-                            // Fungsi untuk menampilkan tombol "Edit Profile" dan menyembunyikan "Simpan", "Batal", dan "Ganti Foto Profil"
-                            function showEditProfileButton() {
-                                document.getElementById('simpanButton').style.display = 'none';
-                                document.getElementById('batalButton').style.display = 'none';
-                                document.getElementById('gantiFotoButton').style.display = 'none';
-                                document.getElementById('editProfileButton').style.display = 'block';
-                            }
-
-                            // Fungsi untuk menampilkan tombol "Simpan", "Batal", dan "Ganti Foto Profil" serta menyembunyikan "Edit Profile"
-                            function showSimpanBatalGantiFotoButtons() {
-                                document.getElementById('simpanButton').style.display = 'block';
-                                document.getElementById('batalButton').style.display = 'block';
-                                document.getElementById('gantiFotoButton').style.display = 'block';
-                                document.getElementById('editProfileButton').style.display = 'none';
-                            }
-
-                            // Mengatur event listener untuk tombol "Edit Profile"
-                            var editProfileButton = document.getElementById('editProfileButton');
-                            if (editProfileButton) {
-                                editProfileButton.addEventListener('click', function () {
-                                    showSimpanBatalGantiFotoButtons();
-                                    sessionStorage.setItem('simpanBatalVisible', 'true');
-                                });
-                            }
-
-                            // Mengatur event listener untuk tombol "Batal"
-                            var batalButton = document.getElementById('batalButton');
-                            if (batalButton) {
-                                batalButton.addEventListener('click', function () {
-                                    showEditProfileButton();
-                                    sessionStorage.removeItem('simpanBatalVisible');
-                                });
-                            }
-
-                            // Memeriksa status tombol "Edit Profile" dari sessionStorage saat halaman dimuat
-                            var simpanBatalVisible = sessionStorage.getItem('simpanBatalVisible');
-                            if (simpanBatalVisible === 'true') {
-                                showSimpanBatalGantiFotoButtons();
-                            } else {
-                                showEditProfileButton();
-                            }
-
-                            // Mengatur event listener saat halaman dimuat ulang
-                            window.addEventListener('beforeunload', function () {
-                                sessionStorage.removeItem('simpanBatalVisible');
-                            });
-                            </script>
-
+                                <button id="batalButton" type="button" class="btn btn-secondary" style="border-radius: 12px;
+                                background: #FFF; color: #000; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15); display: none;" onclick="cancelEdit()">Batal</button>
                             </div>
-
                         </div>
                     </div>
-                </div>
+                    <script>
+                        document.getElementById('gantiFotoButton').addEventListener('click', function() {
+                            // Memicu input file saat tombol "Ganti Foto Profil" diklik
+                            document.getElementById('umkm_img').click();
+                        });
+                    </script>
+                </form>
+
+                <script>
+                    function enableForm() {
+                        // Enable all form fields
+                        document.querySelectorAll('form input, form select, form textarea').forEach(function (element) {
+                            element.removeAttribute('disabled');
+                        });
+
+                        // Show the "Simpan" and "Batal" buttons, hide the "Edit Profile" button
+                        document.getElementById('simpanButton').style.display = 'block';
+                        document.getElementById('batalButton').style.display = 'block';
+                        document.getElementById('editProfileButton').style.display = 'none';
+                    }
+
+                    function cancelEdit() {
+                        // Disable all form fields
+                        document.querySelectorAll('form input, form select, form textarea').forEach(function (element) {
+                            element.setAttribute('disabled', 'disabled');
+                        });
+
+                        // Hide the "Simpan" and "Batal" buttons, show the "Edit Profile" button
+                        document.getElementById('simpanButton').style.display = 'none';
+                        document.getElementById('batalButton').style.display = 'none';
+                        document.getElementById('editProfileButton').style.display = 'block';
+                    }
+                </script>
+
+
                 <div class="" style="">
                     <h1 style="font-weight: 900; font-size: 48px; margin-right: 30px; width: fit-content; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 9.92%, #000AFF 107.06%));
                     background-clip: text;
@@ -307,7 +320,7 @@
                                         <td>{{ $produk->id_produk }}</td>
                                         <td>{{ $produk->nama_produk }}</td>
                                         <td>{{ $produk->kategori_produk }}</td>
-                                        <td>{{ $produk->harga_produk }}</td>
+                                        <td>Rp{{ $produk->harga_produk }}</td>
                                         <td>
                                             <button class="btn" style="background-color: deepskyblue" data-bs-toggle="modal" data-bs-target="#staticBackdropEditProduct">Edit</button>
                                         </td>
@@ -439,8 +452,20 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 </script>
 
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var selectElement = document.getElementById('InputKatagori');
+        var selectedValue = "{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('kategori_usaha') }}";
 
-
+        // Mengatur nilai seleksi pada elemen <select>
+        for (var i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].value === selectedValue) {
+                selectElement.options[i].selected = true;
+                break;
+            }
+        }
+    });
+    </script>
 
 
 <script>
@@ -511,5 +536,53 @@ integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6
     });
     </script>
 
+    <script>
+        // Fungsi untuk menampilkan tombol "Edit Profile" dan menyembunyikan "Simpan", "Batal", dan "Ganti Foto Profil"
+        function showEditProfileButton() {
+            document.getElementById('simpanButton').style.display = 'none';
+            document.getElementById('batalButton').style.display = 'none';
+            document.getElementById('gantiFotoButton').style.display = 'none';
+            document.getElementById('editProfileButton').style.display = 'block';
+        }
+
+        // Fungsi untuk menampilkan tombol "Simpan", "Batal", dan "Ganti Foto Profil" serta menyembunyikan "Edit Profile"
+        function showSimpanBatalGantiFotoButtons() {
+            document.getElementById('simpanButton').style.display = 'block';
+            document.getElementById('batalButton').style.display = 'block';
+            document.getElementById('gantiFotoButton').style.display = 'block';
+            document.getElementById('editProfileButton').style.display = 'none';
+        }
+
+        // Mengatur event listener untuk tombol "Edit Profile"
+        var editProfileButton = document.getElementById('editProfileButton');
+        if (editProfileButton) {
+            editProfileButton.addEventListener('click', function () {
+                showSimpanBatalGantiFotoButtons();
+                sessionStorage.setItem('simpanBatalVisible', 'true');
+            });
+        }
+
+        // Mengatur event listener untuk tombol "Batal"
+        var batalButton = document.getElementById('batalButton');
+        if (batalButton) {
+            batalButton.addEventListener('click', function () {
+                showEditProfileButton();
+                sessionStorage.removeItem('simpanBatalVisible');
+            });
+        }
+
+        // Memeriksa status tombol "Edit Profile" dari sessionStorage saat halaman dimuat
+        var simpanBatalVisible = sessionStorage.getItem('simpanBatalVisible');
+        if (simpanBatalVisible === 'true') {
+            showSimpanBatalGantiFotoButtons();
+        } else {
+            showEditProfileButton();
+        }
+
+        // Mengatur event listener saat halaman dimuat ulang
+        window.addEventListener('beforeunload', function () {
+            sessionStorage.removeItem('simpanBatalVisible');
+        });
+        </script>
 </body>
 </html>
