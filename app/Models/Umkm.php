@@ -19,6 +19,7 @@ class Umkm extends Model
         'deskripsi_usaha',
         'rating',
         'jumlah_ulasan',
+        'umkm_img',
     ];
 
     public function produk()

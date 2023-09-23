@@ -14,10 +14,11 @@ class Produk extends Model
         'kategori_produk',
         'harga_produk',
         'nomor_pemesanan',
+        'produk_img',
     ];
 
     public function umkm()
     {
-        return $this->belongsTo(UmkmProfile::class, 'id_umkm');
+        return $this->belongsTo(Umkm::class, 'id_umkm');
     }
 }

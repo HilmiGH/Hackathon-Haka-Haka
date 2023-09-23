@@ -35,6 +35,10 @@
     flex: 5;
     }
 
+    .save-cancel-buttons {
+        display: none;
+    }
+
     .dashboard {
         background-image: url('{{ asset('img/bg login.svg') }}');
         background-repeat: no-repeat;
@@ -134,53 +138,74 @@
                                 <div>
                                     <div>
                                         <label for="InputNamaUsaha" class="form-label">Nama Usaha</label>
-                                        <input type="text" placeholder="Sugianto Konveksi" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp">    
+                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_usaha') }}" class="form-control" id="InputNamaUsaha" aria-describedby="emailHelp">
                                     </div>
+
                                     <div>
-                                        <label for="InputKatagori" class="form-label">Katagori Usaha</label>
+                                        <label for="InputKatagori" class="form-label">Kategori Usaha</label>
                                         <select class="form-select" aria-label="Default select example" id="InputKatagori">
-                                            <option selected>Pilih Katagori Usaha Anda</option>
+                                            <option value="" disabled>Pilih Kategori Usaha Anda</option>
                                             <option value="Makanan">Makanan</option>
                                             <option value="Minuman">Minuman</option>
                                             <option value="Kerajinan">Kerajinan</option>
                                             <option value="Jasa">Jasa</option>
                                         </select>
+
+                                        <script>
+                                        window.addEventListener('DOMContentLoaded', function () {
+                                            var selectElement = document.getElementById('InputKatagori');
+                                            var selectedValue = "{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('kategori_usaha') }}";
+
+                                            // Mengatur nilai seleksi pada elemen <select>
+                                            for (var i = 0; i < selectElement.options.length; i++) {
+                                                if (selectElement.options[i].value === selectedValue) {
+                                                    selectElement.options[i].selected = true;
+                                                    break;
+                                                }
+                                            }
+                                        });
+                                        </script>
+
                                     </div>
-                                    <div>
-                                        <label for="InputTanggalUsaha" class="form-label">Nama Usaha</label>
-                                        <input type="date" placeholder="12/12/2023" class="form-control" id="InputTanggalUsaha" aria-describedby="emailHelp">    
-                                    </div>
-                                    <div>
-                                        <label for="InputDeskripsiUsaha" class="form-label">Deskripsi Usaha</label>
-                                        <textarea class="form-control" id="InputDeskripsiUsaha" rows="3"></textarea>
-                                    </div>
+
+                            <div>
+                                <label for="InputDeskripsiUsaha" class="form-label">Deskripsi Usaha</label>
+                                <textarea class="form-control" id="InputDeskripsiUsaha" rows="2">
+                                    {{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('deskripsi_usaha') }}
+                                </textarea>
+                            </div>
+
                                 </div>
                                 <div>
                                     <div>
-                                        <label for="InputPemilikUsaha" class="form-label">Nama Usaha</label>
-                                        <input type="text" placeholder="Sugianto" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp">    
+                                        <label for="InputPemilikUsaha" class="form-label">Nama Pemilik</label>
+                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('nama_pemilik') }}" class="form-control" id="InputPemilikUsaha" aria-describedby="emailHelp">
                                     </div>
+
                                     <div>
                                         <label for="InputWAUsaha" class="form-label">Nomor WhatsApp</label>
-                                        <input type="text" placeholder="Sugianto" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp">    
+                                        <input type="text" class="form-control" id="InputWAUsaha" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputIzinUsaha" class="form-label">Surat Izin Usaha</label>
-                                        <input type="text" placeholder="Sugianto" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp">    
+                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('surat_izin_usaha') }}" class="form-control" id="InputIzinUsaha" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputAlamatUsaha" class="form-label">Alamat Usaha</label>
-                                        <input type="text" placeholder="Sugianto" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp">    
+                                        <input type="text" value="{{ DB::table('umkms')->where('id_umkm', request()->query('id'))->value('alamat_usaha') }}" class="form-control" id="InputAlamatUsaha" aria-describedby="emailHelp">
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button class="btn" style="border-radius: 12px;
-                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
-                                <button>Batal</button>
-                                <button class="btn" style="border-radius: 12px;
-                                background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Edit Profile</button>
+                                <div id="saveCancelButtons" class="d-flex justify-content-end">
+                                    <<button id="simpanButton" class="btn" style="border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
+                                    <button>Batal</button>
+                                </div>
+
+                                <button id="editProfileButton" class="btn" style="border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Edit Profile</button>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -247,19 +272,19 @@
                                 <div class="d-flex flex-column">
                                     <div>
                                         <label for="InputNamaProduk" class="form-label">Nama Produk</label>
-                                        <input type="text" placeholder="Tulis Nama Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                        <input type="text" placeholder="Tulis Nama Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
                                     </div>
                                     <div>
                                         <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
-                                        <input type="text" placeholder="Tulis Jenis Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                        <input type="text" placeholder="Tulis Jenis Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
                                     </div>
                                     <div>
                                         <label for="InputHargaProduk" class="form-label">Harga Produk</label>
-                                        <input type="text" placeholder="Tulis Harga Produk Anda" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">    
+                                        <input type="text" placeholder="Tulis Harga Produk Anda" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
-                                        <input type="text" placeholder="Tulis Nomor Pemesananan Produk Anda" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">    
+                                        <input type="text" placeholder="Tulis Nomor Pemesananan Produk Anda" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">
                                     </div>
                                 </div>
                             </div>
@@ -301,19 +326,19 @@
                                 <div class="d-flex flex-column">
                                     <div>
                                         <label for="InputNamaProduk" class="form-label">Nama Produk</label>
-                                        <input type="text" placeholder="Batik Kenangan" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                        <input type="text" placeholder="Batik Kenangan" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
                                     </div>
                                     <div>
                                         <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
-                                        <input type="text" placeholder="Pakaian Pria" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                        <input type="text" placeholder="Pakaian Pria" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">
                                     </div>
                                     <div>
                                         <label for="InputHargaProduk" class="form-label">Harga Produk</label>
-                                        <input type="text" placeholder="Rp 20.000" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">    
+                                        <input type="text" placeholder="Rp 20.000" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">
                                     </div>
                                     <div>
                                         <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
-                                        <input type="text" placeholder="+6287223568788" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">    
+                                        <input type="text" placeholder="+6287223568788" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">
                                     </div>
                                 </div>
                             </div>
@@ -343,6 +368,22 @@ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/j
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
 integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editProfileButton = document.querySelector('#editProfileButton');
+        const saveCancelButtons = document.querySelector('.save-cancel-buttons');
+
+        editProfileButton.addEventListener('click', function () {
+            editProfileButton.style.display = 'none';
+            saveCancelButtons.style.display = 'block';
+        });
+    });
+</script>
+
+<script>
+    
 </script>
 
 </body>

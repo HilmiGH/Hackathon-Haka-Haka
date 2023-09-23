@@ -10,7 +10,8 @@ class CreateUmkmsTable extends Migration
     {
         Schema::create('umkms', function (Blueprint $table) {
             $table->id('id_umkm');
-            $table->string('nama_usaha');
+            $table->string('umkm_img', 255);
+            $table->string('nama_usaha', 50);
             $table->string('kategori_usaha', 50);
             $table->string('tagline_usaha', 50);
             $table->text('alamat_usaha', 100);

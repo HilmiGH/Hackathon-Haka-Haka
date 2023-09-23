@@ -75,13 +75,17 @@
                     <input class="form-control me-2" type="search" placeholder="Ketikkan Pencarian Anda Disini" aria-label="Search" style="width: 300px">
                     <button class="btn btn-outline-success" type="submit" style="display: none">Search</button>
                 </form>
+                @php
+                $user = auth()->user();
+                @endphp
                 <div style="display: inline-block; margin-right: 10px">
-                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px"></p>
+                    <p style="color: #1E1E1E; font-size: 20px; font-weight: 600; margin-bottom: 0px">{{ ($user->name) }}</p>
+
                     <p style="margin-bottom: 0px; font-size: 12px; font-style: normal; font-weight: 700; text-align: right">Admin Toko</p>
                 </div>
                 <div style="display: inline-block; margin-right: 10px">
                     <img src="{{ asset('img/dashboard-profile-logo.png') }}" alt="">
-                </div>
+                </div style="display: inline-block;">
                 <button style="display: inline-block; background-color: transparent; border: 0px">
                     <img src="{{ asset('img/Dashboard-Notif-Logo.png') }}" alt="">
                 </button>
@@ -101,7 +105,7 @@
                     <button class="btn" style="border-radius: 12px;
                     background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Tambah UMKM Baru</button>
                 </div>
-                <div class="table-responsive">
+                <div class="" style="">
                     <table class="table table-bordered border-dark">
                         <thead>
                             <tr>
@@ -110,31 +114,36 @@
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                 background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NAMA UMKM</th>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">KATEGORI</th>
+                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">KATAGORI</th>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
-                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">STATUS</th>
+                                background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RATING</th>
                                 <th style="font-size: 30px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                 background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for ($i = 1; $i <= 10; $i++) { ?>
-                                @foreach($umkms as $umkm)
-                                <tr>
-                                    <td>{{ $umkm->id }}</td>
-                                    <td>{{ $umkm->nama_umkm }}</td>
-                                    <td>{{ $umkm->kategori_usaha }}</td>
-                                    <td>{{ $umkm->rating }}</td>
-                                    <td>
-                                        <a href="{{ route('umkms.show', ['id' => $umkm->id]) }}" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            <?php } ?>
+                            @php
+                            // Ambil data UMKM dari database
+                            $umkms = DB::table('umkms')->take(10)->get();
+                            @endphp
+
+                            @foreach ($umkms as $umkm)
+                            <tr>
+                                <td>{{ $umkm->id_umkm }}</td>
+                                <td>{{ $umkm->nama_usaha }}</td>
+                                <td>{{ $umkm->kategori_usaha }}</td>
+                                <td>{{ $umkm->rating }}</td>
+                                <td>
+                                    <a href="{{ route('admin.umkm-info-dashboard', ['id' => $umkm->id_umkm]) }}" class="btn" style="background-color: deepskyblue">DETAIL</a>
+                                </td>
+
+                            </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </main>
         </div>
     </div>
 
