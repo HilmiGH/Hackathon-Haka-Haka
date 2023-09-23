@@ -565,7 +565,18 @@
             </span>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tutup</button>
+            <div style=" ;padding: 10px; border-radius: 16px; width: 230px ; margin-bottom: 20px;
+            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
+                <li class="nav-item" style="list-style-type: none">
+                    <a style="text-decoration: none; color: #FFFAF6;
+                    text-align: center;
+                    font-family: Lato;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;" href="https://wa.me/">Kontak Kami Disini</a>
+                </li>
+            </div>    
         </div>
       </div>
     </div>

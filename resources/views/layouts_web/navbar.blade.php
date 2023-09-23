@@ -15,8 +15,8 @@
         <li class="nav-item {{ Request::is('umkm') ? 'active' : '' }}">
           <a class="nav-link" style="{{ Request::is('umkm') ? 'font-family: Lato; font-size: 24px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;' : 'font-size: 24px;'}}" href="/umkm">UMKM</a>
         </li>
-        <li class="nav-item {{ Request::is('profil') ? 'active' : '' }}">
-          <a class="nav-link" style="{{ Request::is('profil') ? 'font-family: Lato; font-size: 24px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;' : 'font-size: 24px;'}}" href="/profil">Profil</a>
+        <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
+          <a class="nav-link" style="{{ Request::is('profile') ? 'font-family: Lato; font-size: 24px; font-weight: 900; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;' : 'font-size: 24px;'}}" href="/profil">Profil</a>
         </li>
       </ul>
     </div>
