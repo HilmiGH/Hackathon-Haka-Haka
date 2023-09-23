@@ -41,6 +41,10 @@ Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
 
-Route::get('/product-dashboard', function () {
-    return view('admin.product-dashboard');
+Route::get('/umkm', function () {
+    return view('admin.umkm-dashboard');
+});
+
+Route::get('/umkm/info', function () {
+    return view('admin.umkm-info-dashboard');
 });

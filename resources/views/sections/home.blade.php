@@ -313,7 +313,6 @@
     </section>
     <section style="margin-bottom: 150px">
         <div class="position-relative">
-            <img src="{{ asset('img/LP-Sect6-Image.png') }}" alt="" style="width: 100vw">
         </div>
         <div class="container">
             <h1 style="font-size: 64px; text-align: center; margin-bottom: 30px">KANA Official Store</h1>
