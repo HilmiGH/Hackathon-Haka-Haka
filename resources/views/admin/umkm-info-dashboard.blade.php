@@ -118,6 +118,9 @@
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;">Profil UMKM</h1>
                 </div>
+                <div>
+                    <button></button>
+                </div>
                 <div class="d-flex align-items-center" style="margin-bottom: 30px">
                     <div class="d-flex flex-column">
                         <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
@@ -186,6 +189,8 @@
                     background-clip: text;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;">Produk UMKM</h1>
+                    <button class="btn" style="border-radius: 12px; margin-bottom: 20px;
+                    background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));" data-bs-toggle="modal" data-bs-target="#staticBackdropCreateProduct">Tambah Produk Baru</button>
                     <table class="table table-bordered border-dark">
                         <thead>
                             <tr>
@@ -212,7 +217,7 @@
                                         <td>Katagori <?php echo $i; ?></td>
                                         <td>Stok <?php echo $i; ?></td>
                                         <td>
-                                            <button class="btn" style="background-color: deepskyblue" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Button</button>
+                                            <button class="btn" style="background-color: deepskyblue" data-bs-toggle="modal" data-bs-target="#staticBackdropEditProduct">Button</button>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -222,12 +227,66 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Modal Create Product-->
+    <div class="modal fade" id="staticBackdropCreateProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropCreateProductLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Product</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropCreateProductLabel">Edit Product</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center" style="margin-bottom: 30px">
+                        <div class="d-flex flex-column">
+                            <img src="{{ asset('img/Dashboard-UMKM-Pic.png') }}" alt="">
+                            <button class="btn" style="border-radius: 12px;
+                            background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Ganti Foto Produk</button>
+                        </div>
+                        <form action=""></form>
+                        <div class="d-flex">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        <label for="InputNamaProduk" class="form-label">Nama Produk</label>
+                                        <input type="text" placeholder="Tulis Nama Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                    </div>
+                                    <div>
+                                        <label for="InputJenisProduk" class="form-label">Jenis Produk</label>
+                                        <input type="text" placeholder="Tulis Jenis Produk Anda" class="form-control" id="InputNamaProduk" aria-describedby="NamaProductHelp">    
+                                    </div>
+                                    <div>
+                                        <label for="InputHargaProduk" class="form-label">Harga Produk</label>
+                                        <input type="text" placeholder="Tulis Harga Produk Anda" class="form-control" id="InputHargaProduk" aria-describedby="emailHelp">    
+                                    </div>
+                                    <div>
+                                        <label for="InputPemesananProduk" class="form-label">Nomor Pemesanan</label>
+                                        <input type="text" placeholder="Tulis Nomor Pemesananan Produk Anda" class="form-control" id="InputPemesananProduk" aria-describedby="emailHelp">    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" style="border-radius: 12px; height: 45px;
+                        background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 12px;
+                    background: #FFF;
+                    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);">
+                        <span style="text-align: center; height: 45px; font-size: 20px; font-weight: 600; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;">Batal</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Edit Product-->
+    <div class="modal fade" id="staticBackdropEditProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropEditProductLabel">Edit Product</h1>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex align-items-center" style="margin-bottom: 30px">
