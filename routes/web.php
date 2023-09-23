@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SumCardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('admin.dashboard');
 
     Route::get('/dashboard', [DashboardController::class, 'showDashboard']);
-
+    Route::get('/get-penjualan-harian', [SumCardController::class, 'getTotalPenjualanHarian']);
 
 });
 

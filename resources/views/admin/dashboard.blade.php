@@ -132,10 +132,10 @@
                     <h1 style="font-weight: 900; font-size: 48px; margin-right: 30px">Ringkasan Usaha</h1>
                     <div class="">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-secondary active">Harian</button>
-                            <button type="button" class="btn btn-secondary">Mingguan</button>
-                            <button type="button" class="btn btn-secondary">Bulanan</button>
-                            <button type="button" class="btn btn-secondary">Tahunan</button>
+                            <button type="button" class="btn btn-secondary" onclick="getData('harian')">Harian</button>
+                            <button type="button" class="btn btn-secondary" onclick="getData('mingguan')">Mingguan</button>
+                            <button type="button" class="btn btn-secondary" onclick="getData('bulanan')">Bulanan</button>
+                            <button type="button" class="btn btn-secondary" onclick="getData('tahunan')">Tahunan</button>
                         </div>
                     </div>
                 </div>
