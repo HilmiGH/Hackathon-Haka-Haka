@@ -3,9 +3,9 @@
         <div class="row align-items-center">
             <div class="row">
                 <div class="col-5" style="color: white">
-                    <img class="mb-2" src="{{ asset('img/Karsa-Guna-Logo.png') }}" alt="">
-                    <p class="fw-semibold" style="font-size: 18px;">Jalan Tanpa Nama no 20, Tanggulangin, Sidoarjo</p>
-                    <p class="fw-semibold" style="font-size: 18px;">Karsa Guna adalah brand fashion yang dipegang oleh Sugianto yang berfokus pada produk dompet dan tas berbahan dasar kulit dengan kualitas premium dan mengusung tema nusantara.</p>
+                    <img class="mb-2" style="width: 400px" src="{{ asset('img/Logo-MojoWorks-white.png') }}" alt="">
+                    <p class="fw-semibold" style="font-size: 18px;">Kelurahan Mojo, Surabaya</p>
+                    <p class="fw-semibold" style="font-size: 18px;">Mojoworks adalah Platform layanan terpadu dengan fokus utama menyebarluaskan informasi serta merangkul pengembangan UMKM dan digitalisasi desa</p>
                 </div>
                 <div class="col" style="color: white; margin-inline: 100px">
                     <h5 class="mb-3" style="font-weight: 800; font-size: 24px">Useful Link</h5>
@@ -14,25 +14,19 @@
                             <a href="" class="nav-link p-0 text-white" style="">Katalog Produk</a>
                         </li>
                         <li class="nav-item mb-3">
-                            <a href="" class="nav-link p-0 text-white">Workshop Kami</a>
+                            <a href="/workshop" class="nav-link p-0 text-white">Workshop Kami</a>
                         </li>
                         <li class="nav-item mb-3">
                             <a href="" class="nav-link p-0 text-white">Kebijakan Privasi</a>
-                        </li>
-                        <li class="nav-item mb-3">
-                            <a href="" class="nav-link p-0 text-white">Ketentuan Garansi</a>
-                        </li>
-                        <li class="nav-item mb-3">
-                            <a href="" class="nav-link p-0 text-white">Join Program Reseller</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col" style="color: white;">
                     <h5 class="mb-3" style="font-weight: 800; font-size: 24px">Contact Us</h5>
-                    <p class="fw-medium mb-3" style="font-size: 18px">Karsa Guna by Sugianto</p>
+                    <p class="fw-medium mb-3" style="font-size: 18px">Mojoworks by KIM Mojo</p>
                     <div class="d-flex align-items-center mb-4">
                         <img class="me-1" src="{{ asset('img/Web-Logo.png') }}" alt="" style="width: 20px; height: 20px">
-                        <span class="fw-medium" style="font-size: 18px">karsaguna.com</span>
+                        <span class="fw-medium" style="font-size: 18px">/hakahaka.my.id/</span>
                     </div>
                     <div class="d-flex align-items-center mb-4">
                         <a class="me-2" href=""><img src="{{ asset('img/Ig-Logo.png') }}" alt=""></a>

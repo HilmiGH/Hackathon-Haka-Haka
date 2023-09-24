@@ -118,6 +118,7 @@
         line-height: 30px; /* 150% */
         letter-spacing: 1px;">Karsaguna.com</span> - Kami dengan gembira mengumumkan kolaborasi yang sangat dinantikan antara Karsa Guna, brand kerajinan kulit yang berbasis di Tanggulangin, Sidoarjo, dan himpunan mahasiswa Departemen Desain Komunikasi Visual (DKV) Institut Teknologi Sepuluh Nopember (ITS). Kolaborasi ini merupakan langkah penting dalam mendukung pertumbuhan industri kerajinan kulit lokal sambil memberikan kesempatan berharga bagi generasi muda untuk mengasah keterampilan mereka. Dalam rangka kerjasama ini, kami akan memberikan pelatihan mendalam kepada mahasiswa DKV ITS, mencakup teknik-teknik produksi, desain inovatif, serta strategi pemasaran yang efektif dalam konteks produk kulit. Kami yakin kolaborasi ini akan menjadi landasan kokoh untuk kreativitas yang tak terbatas dan pertumbuhan bisnis yang berkelanjutan.
     </p>
+    <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
     <hr>
     <h3 style="font-family: Lato;
     font-size: 40px;
@@ -268,6 +269,23 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Coming Soon</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>Fitur ini memudahkan user dalam mengubah konten agar menjadi lebih baik</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Saya Mengerti</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="position-relative">
     <img style="bottom: -35px" class="position-absolute" src="{{ asset('img/Detail-Berita-Bottom.png') }}" alt="">
 </div>

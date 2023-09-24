@@ -177,7 +177,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
-            line-height: 30px; /* 150% */">Berikut ini materi lengkap yang akan anda dapatkan di workshop Kana</p>
+            line-height: 30px; /* 150% */">Berikut ini materi lengkap yang akan anda dapatkan di workshop Mojoworks</p>
         </section>
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
             <div class="accordion" id="accordionExample" style="margin-bottom: 60px">
@@ -429,7 +429,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Kana:</p>
+            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
             <hr>
         </section>
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
@@ -445,7 +445,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Kana:</p>
+            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
             <hr>
         </section>
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
@@ -461,7 +461,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Kana:</p>
+            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
             <hr>
         </section>
     </div>
@@ -487,7 +487,7 @@
                         font-weight: 600; margin-bottom: 0px">Tinggal 45 Slot lagi</p>
                     </div>
                 </div>
-                <button class="btn" style="border-radius: 16px; padding-block: 20px ; padding-inline: 30px; width: 100% ; margin-bottom: 20px;
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-radius: 16px; padding-block: 20px ; padding-inline: 30px; width: 100% ; margin-bottom: 20px;
                 background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
                     <span style="color: #FFFAF6;
                     text-align: center;
@@ -495,7 +495,7 @@
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 700;
-                    line-height: normal;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    line-height: normal;">
                     Ikut Workshop
                     </span>
                 </button>
@@ -512,14 +512,14 @@
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: normal;">Sertifikat Kelulusan (bisa untuk melamar kerja di Kana)</li>
+                    line-height: normal;">Sertifikat Kelulusan (bisa untuk melamar kerja di Mojoworks)</li>
                     <li style="color: #313131;
                     text-align: justify;
                     font-family: Lato;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: normal;">Merchandise eksklusif Kana (totebag dan stiker)</li>
+                    line-height: normal;">Merchandise eksklusif Mojoworks (totebag dan stiker)</li>
                     <li style="color: #313131;
                     text-align: justify;
                     font-family: Lato;

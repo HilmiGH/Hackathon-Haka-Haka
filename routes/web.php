@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/produk/edit/{id}', 'UpdateProdukController@edit')->name('produk-edit');
     Route::post('/produk/update/{id}', 'UpdateProdukController@update')->name('produk-update');
 
-
+    
 
 });
 
