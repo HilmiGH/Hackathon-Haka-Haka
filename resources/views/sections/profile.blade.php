@@ -74,17 +74,17 @@
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;">Kana menghadirkan beragam manfaat yang tak tertandingi </p>
+    line-height: normal;">Mojo Works menghadirkan beragam manfaat yang tak tertandingi </p>
     <div class="row justify-content-center">
         <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-            <a href="{{ url('detailumkm', ['id' => $umkm->id_umkm]) }}" style="text-decoration: none">
+            <a href="" style="text-decoration: none">
                 <div class="card" style="border-radius: 30px;
                 background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
-                    <img class="card-img-top mx-auto" src="{{ asset('img/UMKM Image/' . $umkm->umkm_img) }}" style="height:300px; width:90%;margin-top:5%">
+                    <img class="card-img-top mx-auto" src="" style="height:300px; width:90%;margin-top:5%">
                     <div class="card-body">
-                        <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px">{{ $umkm->nama_usaha }}</h4>
-                        <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">{{ $umkm->kategori_usaha }}</p>
+                        <h4 class="card-title" style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 44px; font-weight: 900; margin-bottom: 0px"></h4>
+                        <p style="color: #FFF; text-align: center; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;"></p>
                     </div>
                 </div>
             </a>

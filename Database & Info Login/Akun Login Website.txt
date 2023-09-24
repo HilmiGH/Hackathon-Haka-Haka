@@ -1,0 +1,3 @@
+url: hakahaka.my.id/login
+username: admin@haka.id
+password: Ry12Ho34
