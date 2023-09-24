@@ -1,5 +1,5 @@
 @extends('layouts_web.app')
-@section('title', 'Beranda')
+@section('title', 'Workshop')
 @section('content')
 
 <style>
@@ -24,6 +24,10 @@
     color: orange;
 }
 </style>
+@php
+// Ambil data dari tabel "workshops" berdasarkan ID atau kriteria lainnya
+$workshop = DB::table('workshops')->where('id', request()->query('id'))->first();
+@endphp
 
 <div class="d-flex">
     <div class="left-container">
@@ -50,7 +54,7 @@
                 text-transform: uppercase; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                 background-clip: text;
                 -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;">WORKSHOP STRATEGI JITU <br> MEMAJUKAN KIM SURABAYA</h1>
+                -webkit-text-fill-color: transparent;">{{ $workshop->nama_workshop }} </h1>
                 <div style="margin-block: 20px">
                 <span style="color: rgba(92, 92, 92, 0.50);
                 font-family: Lato;
@@ -153,7 +157,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
-            line-height: 30px; /* 150% */">Pelatihan ini akan dipandu oleh para ahli dalam seni kerajinan kulit. Mereka akan berbagi pengetahuan mendalam mereka tentang pemilihan bahan kulit yang berkualitas, teknik pemotongan, penyusunan pola, jahitan tangan yang presisi, dan finishing yang sempurna. Pelatih kami tidak hanya akan mengajarkan Anda keterampilan praktis, tetapi juga akan membagikan wawasan tentang desain yang menarik dan tren terbaru dalam dunia tas dan dompet kulit. </p>
+            line-height: 30px; /* 150% */">{{ $workshop->deskripsi_workshop }} </p>
             <a style="font-family: Lato;
             font-size: 24px;
             font-style: normal;
@@ -179,59 +183,37 @@
             font-weight: 400;
             line-height: 30px; /* 150% */">Berikut ini materi lengkap yang akan anda dapatkan di workshop Mojoworks</p>
         </section>
+        @php
+        // Ambil semua data dari tabel "materi_workshops" berdasarkan ID workshop tertentu
+        $materiworkshops = DB::table('materi_workshops')->where('materi_workshop', request()->query('id'))->get();
+        @endphp
+
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
             <div class="accordion" id="accordionExample" style="margin-bottom: 60px">
+                @foreach($materiworkshops as $materiworkshop)
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Modul 1: Pengantar Umum & Pemahaman Dasar 
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $materiworkshop->id }}" aria-expanded="true" aria-controls="collapse{{ $materiworkshop->id }}">
+                            Modul {{ $materiworkshop->judul_modul }}
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapse{{ $materiworkshop->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <strong>{{ $materiworkshop->deskripsi_modul }}</strong>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Modul 2: Pengenalan Alat Pengerjaan
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Modul 3: Pengenalan Bahan
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            Modul 4: Pengenalan Aksesoris
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+        </section>
+
             <hr>
         </section>
+        @php
+        // Ambil semua data dari tabel "jadwal_workshop" berdasarkan ID workshop tertentu
+        $jadwalworkshops = DB::table('jadwal_workshops')->where('jadwal_workshop', request()->query('id'))->get();
+        @endphp
+
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
             <h2 style="color: #141414;
             font-family: Lato;
@@ -245,7 +227,9 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400;
-            line-height: 30px; /* 150% */">Silahkan memilih jadwal pelatihan yang sesuai dengan waktu luang anda di bawah ini:</p>
+            line-height: 30px;">Silakan memilih jadwal pelatihan yang sesuai dengan waktu luang Anda di bawah ini:</p>
+
+            @foreach($jadwalworkshops as $jadwalWorkshop)
             <div style="border-radius: 16px;
             border: 0.8px solid #BABABA;
             background: #FFF; padding: 30px; margin-bottom: 20px">
@@ -255,11 +239,8 @@
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 900;
-                    line-height: 30px; /* 125% */; background: var(--blue-black, linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%));
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;">
-                        BATCH 1
+                    line-height: 30px;">
+                     BATCH   {{ $jadwalWorkshop->jadwal_workshop }}
                     </h3>
                     <div style="border-radius: 6px;
                     background: rgba(62, 104, 178, 0.15); padding: 10px; margin-left: auto; padding-inline: 20px">
@@ -268,23 +249,14 @@
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 900;
-                        line-height: normal; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;">Sisa: 11 kursi</span>
+                        line-height: normal;">Sisa: 11  kursi</span>
                     </div>
                 </div>
                 <hr>
                 <div class="d-flex align-items-center" style="margin-bottom: 10px">
                     <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
-                        <path d="M6.5 0.899902C2.91159 0.899902 0 3.52062 0 6.7499C0 11.9499 6.5 19.0999 6.5 19.0999C6.5 19.0999 13 11.9499 13 6.7499C13 3.52062 10.0884 0.899902 6.5 0.899902ZM6.5 9.9999C5.98577 9.9999 5.48309 9.84741 5.05552 9.56172C4.62795 9.27603 4.2947 8.86997 4.09791 8.39488C3.90112 7.91979 3.84964 7.39702 3.94996 6.89267C4.05028 6.38832 4.29791 5.92504 4.66152 5.56142C5.02514 5.19781 5.48841 4.95018 5.99276 4.84986C6.49712 4.74954 7.01989 4.80103 7.49498 4.99782C7.97006 5.1946 8.37613 5.52785 8.66182 5.95542C8.94751 6.38299 9.1 6.88567 9.1 7.3999C9.09925 8.08923 8.82508 8.75012 8.33765 9.23755C7.85021 9.72498 7.18933 9.99915 6.5 9.9999Z" fill="url(#paint0_linear_658_343)"/>
-                        <defs>
-                          <linearGradient id="paint0_linear_658_343" x1="3.15576" y1="0.171902" x2="19.8254" y2="18.2483" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.291667" stop-color="#000AFF"/>
-                            <stop offset="1" stop-color="#000304"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                        <!-- SVG path here -->
+                    </svg>
                     <p style="color: #000;
                     text-align: justify;
                     font-family: Lato;
@@ -292,83 +264,12 @@
                     font-style: normal;
                     margin-bottom: 0;
                     font-weight: 700;
-                    line-height: 30px; /* 150% */; ">Balai Kota Surabaya (cek lokasi map <a style="text-decoration: none; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    font-family: Lato;
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 30px;" href="">klik disini</a>)</p>
+
                 </div>
                 <div class="d-flex align-items-center">
                     <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
-                        <path d="M6 9H4V11H6V9ZM10 9H8V11H10V9ZM14 9H12V11H14V9ZM16 2H15V0H13V2H5V0H3V2H2C0.89 2 0.00999999 2.9 0.00999999 4L0 18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C17.1 20 18 19.1 18 18V4C18 2.9 17.1 2 16 2ZM16 18H2V7H16V18Z" fill="url(#paint0_linear_658_353)"/>
-                        <defs>
-                          <linearGradient id="paint0_linear_658_353" x1="4.36951" y1="-0.8" x2="21.8876" y2="23.1355" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.291667" stop-color="#000AFF"/>
-                            <stop offset="1" stop-color="#000304"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      <p style="color: #000;
-                      text-align: justify;
-                      font-family: Lato;
-                      font-size: 20px;
-                      font-style: normal;
-                      margin-bottom: 0;
-                      font-weight: 700;
-                      line-height: 30px; /* 150% */; ">20 November 2023, 10.00 WIB - 13.00 WIB  ( <a style="text-decoration: none; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                      background-clip: text;
-                      -webkit-background-clip: text;
-                      -webkit-text-fill-color: transparent;
-                      font-family: Lato;
-                      font-size: 20px;
-                      font-style: normal;
-                      font-weight: 700;
-                      line-height: 30px;" href="">info rundown klik disini</a>)</p>
-                </div>
-            </div>
-            <div style="border-radius: 16px;
-            border: 0.8px solid #BABABA;
-            background: #FFF; padding: 30px; margin-bottom: 60px">
-                <div class="d-flex align-items-center">
-                    <h3 style="text-align: justify; margin-bottom: 0px;
-                    font-family: Lato;
-                    font-size: 24px;
-                    font-style: normal;
-                    font-weight: 900;
-                    line-height: 30px; /* 125% */; background: var(--blue-black, linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%));
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;">
-                        BATCH 1
-                    </h3>
-                    <div style="border-radius: 6px;
-                    background: rgba(62, 104, 178, 0.15); padding: 10px; margin-left: auto; padding-inline: 20px">
-                        <span style="text-align: center;
-                        font-family: Lato;
-                        font-size: 16px;
-                        font-style: normal;
-                        font-weight: 900;
-                        line-height: normal; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;">Sisa: 11 kursi</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="d-flex align-items-center" style="margin-bottom: 10px">
-                    <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
-                        <path d="M6.5 0.899902C2.91159 0.899902 0 3.52062 0 6.7499C0 11.9499 6.5 19.0999 6.5 19.0999C6.5 19.0999 13 11.9499 13 6.7499C13 3.52062 10.0884 0.899902 6.5 0.899902ZM6.5 9.9999C5.98577 9.9999 5.48309 9.84741 5.05552 9.56172C4.62795 9.27603 4.2947 8.86997 4.09791 8.39488C3.90112 7.91979 3.84964 7.39702 3.94996 6.89267C4.05028 6.38832 4.29791 5.92504 4.66152 5.56142C5.02514 5.19781 5.48841 4.95018 5.99276 4.84986C6.49712 4.74954 7.01989 4.80103 7.49498 4.99782C7.97006 5.1946 8.37613 5.52785 8.66182 5.95542C8.94751 6.38299 9.1 6.88567 9.1 7.3999C9.09925 8.08923 8.82508 8.75012 8.33765 9.23755C7.85021 9.72498 7.18933 9.99915 6.5 9.9999Z" fill="url(#paint0_linear_658_343)"/>
-                        <defs>
-                          <linearGradient id="paint0_linear_658_343" x1="3.15576" y1="0.171902" x2="19.8254" y2="18.2483" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.291667" stop-color="#000AFF"/>
-                            <stop offset="1" stop-color="#000304"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                        <!-- SVG path here -->
+                    </svg>
                     <p style="color: #000;
                     text-align: justify;
                     font-family: Lato;
@@ -376,46 +277,12 @@
                     font-style: normal;
                     margin-bottom: 0;
                     font-weight: 700;
-                    line-height: 30px; /* 150% */; ">Balai Kota Surabaya (cek lokasi map <a style="text-decoration: none; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    font-family: Lato;
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 30px;" href="">klik disini</a>)</p>
-                </div>
-                <div class="d-flex align-items-center">
-                    <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
-                        <path d="M6 9H4V11H6V9ZM10 9H8V11H10V9ZM14 9H12V11H14V9ZM16 2H15V0H13V2H5V0H3V2H2C0.89 2 0.00999999 2.9 0.00999999 4L0 18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C17.1 20 18 19.1 18 18V4C18 2.9 17.1 2 16 2ZM16 18H2V7H16V18Z" fill="url(#paint0_linear_658_353)"/>
-                        <defs>
-                          <linearGradient id="paint0_linear_658_353" x1="4.36951" y1="-0.8" x2="21.8876" y2="23.1355" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.291667" stop-color="#000AFF"/>
-                            <stop offset="1" stop-color="#000304"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      <p style="color: #000;
-                      text-align: justify;
-                      font-family: Lato;
-                      font-size: 20px;
-                      font-style: normal;
-                      margin-bottom: 0;
-                      font-weight: 700;
-                      line-height: 30px; /* 150% */; ">20 November 2023, 10.00 WIB - 13.00 WIB  ( <a style="text-decoration: none; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%);
-                      background-clip: text;
-                      -webkit-background-clip: text;
-                      -webkit-text-fill-color: transparent;
-                      font-family: Lato;
-                      font-size: 20px;
-                      font-style: normal;
-                      font-weight: 700;
-                      line-height: 30px;" href="">info rundown klik disini</a>)</p>
+                    line-height: 30px;">{{ $jadwalWorkshop->jadwal_tanggal }}, {{ $jadwalWorkshop->jadwal_pukul }} ( <a style="text-decoration: none; font-family: Lato; font-size: 20px; font-style: normal; font-weight: 700; line-height: 30px; background: linear-gradient(147deg, #000AFF 39.55%, #000304 118.03%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;" href="{{ $jadwalWorkshop->link_rd }}">info rundown klik disini</a>)</p>
                 </div>
             </div>
-            <hr>
+            @endforeach
         </section>
+
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
             <h2 style="color: #141414;
             font-family: Lato;
@@ -429,9 +296,10 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
-            <hr>
+            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojo Works:</p>
+            {{ $workshop->Peserta }}<hr>
         </section>
+
         <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
             <h2 style="color: #141414;
             font-family: Lato;
@@ -445,23 +313,7 @@
             font-size: 20px;
             font-style: normal;
             font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
-            <hr>
-        </section>
-        <section style="padding-inline: 60px; padding-left: 75px; margin-top: 20px">
-            <h2 style="color: #141414;
-            font-family: Lato;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: normal; margin-bottom: 20px">Ulasan</h2>
-            <p style="color: #1E1E1E;
-            text-align: justify;
-            font-family: Lato;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400; margin-bottom: 60px;
-            line-height: 30px; /* 150% */">Berikut ini kriteria peserta yang dapat mengikuti kegiatan workshop Mojoworks:</p>
+            line-height: 30px; /* 150% */">Berikut ini fasilitator yang mengisi kegiatan workshop Mojo Works:<br>{{ $workshop->fasilitator }}</p>
             <hr>
         </section>
     </div>
@@ -528,11 +380,11 @@
                     font-weight: 400;
                     line-height: normal;">Mendapatkan banyak relasi (circle pengrajin kulit)</li>
                 </ul>
-                
+
             </div>
           </div>
     </aside>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -576,7 +428,7 @@
                     font-weight: 700;
                     line-height: normal;" href="https://wa.me/">Kontak Kami Disini</a>
                 </li>
-            </div>    
+            </div>
         </div>
       </div>
     </div>

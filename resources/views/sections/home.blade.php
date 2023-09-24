@@ -63,7 +63,7 @@
                 font-family: Lato;
                 font-size: 28px;
                 font-weight: 600;
-                ">IKUTI PELATIHAN MOJO WORKS YANG DIBUKA HARI INI</h3>
+                ">Simak Kegiatan Terkini dari KIM Mojo</h3>
             </div>
             <div id="carousel1" class="carousel slide" style="margin-top: 50px">
                 <div class="carousel-indicators">
@@ -175,7 +175,7 @@
                             <div class="row justify-content-center">
                                 @foreach($umkmGroup as $umkm)
                                     <div class="col-sm-4" style="max-width: 400px; max-height: 450px">
-                                        <a href="{{ url('detailumkm', ['id' => $umkm->id_umkm]) }}" style="text-decoration: none">
+                                        <a href="/detailumkm?id={{ $umkm->id_umkm }}"style="text-decoration: none">
                                             <div class="card" style="border-radius: 30px;
                                             background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
@@ -225,25 +225,41 @@
                     font-style: normal;
                     font-weight: 600;
                     line-height: normal;
-                    margin-bottom: 60px">IKUTI PELATIHAN MOJO WORKS & RASAKAN BENEFITNYA</h3>
+                    margin-bottom: 60px">Ikuti Pelatihan Mojo & Rasakan Benefitnya</h3>
                 </div>
             </div>
             <div id="carousel5" class="carousel slide">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    @php
+                    // Ambil data workshop dari database
+                    $workshops = DB::table('workshops')->get();
+                    $active = 'active'; // Untuk mengidentifikasi item pertama sebagai item aktif
+                    $slideIndex = 0; // Untuk mengidentifikasi indeks slide
+                    @endphp
+
+                    @foreach($workshops as $workshop)
+                        <button type="button" data-bs-target="#carousel5" data-bs-slide-to="{{ $slideIndex }}" class="{{ $active }}" aria-current="true" aria-label="Slide {{ $slideIndex + 1 }}"></button>
+                        @php
+                        $active = ''; // Hanya item pertama yang aktif
+                        $slideIndex++;
+                        @endphp
+                    @endforeach
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('img/LP-Sect4-Banner.png') }}" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('img/LP-Sect4-Banner.png') }}" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('img/LP-Sect4-Banner.png') }}" class="d-block w-100" alt="...">
-                    </div>
+                    @php
+                    $active = 'active'; // Reset item aktif
+                    @endphp
+
+                    @foreach($workshops as $workshop)
+                        <div class="carousel-item {{ $active }}">
+                            <a href="http://localhost:8000/detailworkshop?id={{ $workshop->id }}" style="text-decoration: none">
+                                <img src="{{ asset('img/LP-Sect4-Banner.png') }}" class="d-block w-100" alt="...">
+                            </a>
+                        </div>
+                        @php
+                        $active = ''; // Hanya item pertama yang aktif
+                        @endphp
+                    @endforeach
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel5" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -254,6 +270,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
         </div>
     </section>
     <section style="margin-bottom: 100px">
@@ -307,7 +324,7 @@
                 font-style: normal;
                 font-weight: 600;
                 line-height: normal;
-                margin-bottom: 40px">Discover their insights and impressions of Kana</h3>
+                margin-bottom: 40px">Temukan pandangan dan impresi mereka Mengenai Mojo Works</h3>
             </div>
             <div id="carousel6" class="carousel slide" style="height: 720px;">
                 <div class="carousel-indicators" style="">
@@ -332,7 +349,7 @@
                                     Influencer
                                 </p>
                                 <p style="text-align: justify; color: #FFF; text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); font-size: 28px; font-weight: 600;">
-                                    “Kana's leather pieces have become an essential part of my daily style. The attention to detail and the superb quality make them a must-have for anyone who values both fashion and functionality. Kudos to Kana for redefining leather craftsmanship!”
+                                    “Terima kasih Moju Works berkat dedikasinya membuat desa kami semakin dekat dengan digitalisasi masa kini!”
                                 </p>
                             </div>
                         </div>
@@ -402,31 +419,32 @@
                     <h1 style="color: #FFF;
                     text-align: center;
                     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-                    font-family: BlackChancery;
+                    font-family: Lato;
                     font-size: 96px;
-                    font-style: normal;
-                    font-weight: 5;
-                    line-height: normal;">Our Community</h1>
+                    font-style: Black;
+                    font-weight: 900;
+                    line-height: normal;">Komunitas Kami</h1>
                 </div>
             </div>
-            <div style="padding-bottom: 60px ;background-image: url({{ asset('img/LP-Sect10-Background.png') }})">
+            <div style="padding-bottom: 60px; background-image: url({{ asset('img/LP-Sect10-Background.jpg') }}); background-size: 130% auto;">
                 <div class="container">
                     <div class="d-flex" style="padding-block-start: 100px; padding-block-end: 80px ; gap: 50px;">
-                        <img src="{{ asset('img/LP-Sect10-Photo.png') }}" alt="">
+                        <img src="{{ asset('img/mojoo.png') }}" alt="">
                         <div style="">
-                            <div class="" style="font-weight: 900; font-size: 96px; color: white; line-height: 90%; margin-bottom: 30px">KIM MOJO</div>
-                            <div class="fw-medium" style="color: white; font-size: 26px; text-align: justify; margin-bottom: 30px">Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet Lorem ipsum dulu sit amet .</div>
+                            <div class="" style="font-weight: 900; font-size: 96px; color: white; line-height: 90%; margin-bottom: 30px">MOJOWORKS</div>
+                            <div class="fw-medium" style="color: white; font-size: 26px; text-align: justify; margin-bottom: 30px">Platform layanan terpadu dengan fokus utama menyebarluaskan informasi serta merangkul pengembangan UMKM dan digitalisasi desa.
+                                workshop yang disediakan akan fokus pada pemahaman dan penerapan berbagai aspek yang dimiliki oleh KIM Mojo. Memiliki peran yang proaktif dalam memberikan panduan dan dukungan kepada komunitas lain dalam berbagai aspek terkait informasi, media, dan komunikasi</div>
                             <div class="d-flex" style="gap: 50px">
                                 <a href="" style="text-decoration: none; padding-block: 10px; padding-inline: 60px ; border-radius: 12px; border-radius: 12px;
                                 background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));">
-                                    <span class="fw-bold" style="font-size: 24px; color: white">Read More</span>
+                                    <span href="/profil" class="fw-bold" style="font-size: 24px; color: white">Lebih Lanjut</span>
                                 </a>
                                 <a href="" style="text-decoration: none; padding-block: 10px; padding-inline: 60px ; border-radius: 12px; border-radius: 12px;
                                 border: 3px solid var(--gradddd, #4DBFFF);">
                                     <span class="fw-bold" style="font-size: 24px; color: white; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));
                                     background-clip: text;
                                     -webkit-background-clip: text;
-                                    -webkit-text-fill-color: transparent;">View Catalog</span>
+                                    -webkit-text-fill-color: transparent;">Workshop</span>
                                 </a>
                             </div>
                         </div>

@@ -11,7 +11,7 @@
                     <h5 class="mb-3" style="font-weight: 800; font-size: 24px">Useful Link</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-3">
-                            <a href="" class="nav-link p-0 text-white" style="">Katalog Produk</a>
+                            <a href="" class="nav-link p-0 text-white" style="">Mojowiki</a>
                         </li>
                         <li class="nav-item mb-3">
                             <a href="/workshop" class="nav-link p-0 text-white">Workshop Kami</a>
@@ -26,17 +26,17 @@
                     <p class="fw-medium mb-3" style="font-size: 18px">Mojoworks by KIM Mojo</p>
                     <div class="d-flex align-items-center mb-4">
                         <img class="me-1" src="{{ asset('img/Web-Logo.png') }}" alt="" style="width: 20px; height: 20px">
-                        <span class="fw-medium" style="font-size: 18px">/hakahaka.my.id/</span>
+                        <span class="fw-medium" style="font-size: 18px">hakahaka.my.id</span>
                     </div>
                     <div class="d-flex align-items-center mb-4">
                         <a class="me-2" href=""><img src="{{ asset('img/Ig-Logo.png') }}" alt=""></a>
                         <a class="me-2" href=""><img src="{{ asset('img/Twitter-Logo.png') }}" alt=""></a>
                         <a class="me-2" href=""><img src="{{ asset('img/Tiktok-Logo.png') }}" alt=""></a>
-                        <span class="fw-medium" style="font-size: 18px">@Karsaguna</span>
+                        <span class="fw-medium" style="font-size: 18px">@mojoworks.id</span>
                     </div>
                     <div class="d-flex align-items-center mb-4">
                         <a class="me-2" href=""><img src="{{ asset('img/Yt-Logo.png') }}" alt=""></a>
-                        <span class="fw-medium" style="font-size: 18px">Karsaguna</span>
+                        <span class="fw-medium" style="font-size: 18px">Majo Works</span>
                     </div>
                 </div>
             </div>
@@ -44,4 +44,4 @@
         <div style="width: auto; background-color: white; height: 1px; margin-top: 30px"></div>
         <p class="mt-2 ms-2" style="color: white; font-size: 18px;">Copyright © 2023 Mojoworks by KIM Mojo All Right Reserved</p>
     </div>
-</div>gi
+</div>

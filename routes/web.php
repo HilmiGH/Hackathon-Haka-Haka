@@ -25,7 +25,7 @@ Route::get('/berita', function () {
     return view('sections.berita');
 });
 
-Route::get('/workshop', function () {
+Route::get('/detailworkshop', function () {
     return view('sections.workshop');
 });
 
@@ -77,14 +77,22 @@ Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/detailproduk', [App\Http\Controllers\KatalogController::class, 'detail'])->name('detailproduk');
+Route::get('/detailumkm', function () {
+    // Retrieve the 'id' parameter from the query string
+    $id = request('id');
+
+    // Add your logic here to retrieve and display information based on the 'id'
+    // For example, you can use $id to fetch data from your database
+
+    return view('sections.detailproduk', ['id' => $id]);
+});
 
 //temp
 Route::get('/pos', function () {
     return view('admin.pos-dashboard');
 });
 
-Route::get('/detail-berita', function () {
+Route::get('/mojowiki', function () {
     return view('sections.berita-detail');
 });
 
