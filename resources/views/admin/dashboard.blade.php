@@ -88,7 +88,7 @@
                     font-weight: 600;
                     line-height: normal;">Ringkasan</span>
                 </a>
-                <a style="" class="nav-link {{ Request::is('dashboard') ? 'actived-flex' : '' }} d-flex align-items-center" href="#" style="
+                <a style="" class="nav-link {{ Request::is('dashboard') ? 'actived-flex' : '' }} d-flex align-items-center" href="/umkm" style="
                 {{ Request::is('dashboard') ? 'border-radius: 12px; background: var(--gradddd, linear-gradient(147deg, #4DBFFF 19.92%, #000AFF 107.06%));' : ''}}">
                     <svg style="margin-right: 10px" xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
                         <path d="M21.1719 9.77778H22.55V24.75H0.5V9.77778H1.87812V7.05556C1.87812 3.2989 4.96512 0.250006 8.76875 0.250006C9.74722 0.250006 10.6843 0.454173 11.525 0.821673C12.3934 0.443456 13.3322 0.248735 14.2812 0.250006C18.0849 0.250006 21.1719 3.2989 21.1719 7.05556V9.77778ZM4.63437 7.05556V9.77778H7.39062V7.05556C7.39062 5.51751 7.92809 4.11556 8.79631 2.97223H8.76875C6.49484 2.97223 4.63437 4.80973 4.63437 7.05556ZM18.4156 9.77778V7.05556C18.4156 4.80973 16.5552 2.97223 14.2812 2.97223H14.2537C15.1599 4.14588 15.6534 5.5796 15.6594 7.05556V9.77778H18.4156ZM11.525 4.03389C10.6843 4.78251 10.1469 5.85778 10.1469 7.05556V9.77778H12.9031V7.05556C12.9031 5.85778 12.3657 4.78251 11.525 4.03389Z" fill="url(#paint0_linear_980_4649)"/>
