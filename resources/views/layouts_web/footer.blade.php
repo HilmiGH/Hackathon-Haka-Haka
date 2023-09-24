@@ -50,4 +50,4 @@
         <div style="width: auto; background-color: white; height: 1px; margin-top: 30px"></div>
         <p class="mt-2 ms-2" style="color: white; font-size: 18px;">Copyright © 2023 Karsa Guna by Sugianto All Right Reserved</p>
     </div>
-</div>
+</div>gi
